@@ -13,6 +13,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     <style>
         
         .alert{
@@ -169,16 +172,16 @@
   </head>
   <body>
     <nav class="navbar navbar-default maintop">
-        <div class="container-fluid">
+        <!--<div class="container-fluid">
             <div class="navbar-form navbar-right">
-                <a href="<?php echo site_url('login'); ?>">
+                <a href="<?php //echo site_url('login'); ?>">
                     <button type="submit" class="btn btn-default">
                          Kundenlogin
                     </button></a>
                 <input type="text" name="fldSuche" class="form-control" placeholder="Suche">
                 <span class="glyphicon glyphicon-scope form-control-feedback"></span>
             </div>
-        </div>
+        </div>-->
     </nav>
     <nav class="navbar navbar-default mainnav" role="navigation">
         <div class="container-fluid">
@@ -265,8 +268,6 @@
         </div>
         <div class="row footer-3"></div>
     </div>      
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script>

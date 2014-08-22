@@ -10,23 +10,30 @@ class Importer extends CI_Controller {
 		$this->db->query('DELETE FROM genossenschaft_basis');
 		$this->db->query('DELETE FROM genossenschaft_adresse');
 		
-		$file = fopen(base_url('data/import.csv'), 'r');
+		$file = fopen(base_url('data/import20140822.csv'), 'r');
 		
 		// Übrspringt den ersten Datensatz (Tabellenkopf)
 		fgetcsv($file);
+        
+        $iSets = 0;
 		while(!feof($file)){
 
-			$csv = fgetcsv($file);
-			
+			$csv = fgetcsv($file, 0, ';');
 			$insert = array();
+
 			if($csv[0] != ''){
 				
-				$this->db->select('id')->from('genossenschaft_basis')->order_by('id desc')->limit(1);
-				$id = $this->db->get()->row()->id+1;
+                if($iSets > 0){
+                    $this->db->select('id')->from('genossenschaft_basis')->order_by('id desc')->limit(1);
+                    $id = $this->db->get()->row()->id+1;
+                }else{
+                    $id = 1;
+                }
 				
 				$insert['id'] = $id;
 				$insert['name'] = trim(utf8_encode($csv[0]));
 				$insert['land'] = 'de';
+                $insert['branche'] = utf8_encode($csv[9]);
 				$this->db->insert('genossenschaft_basis', $insert);
 				
 				$meta['genossenschaft_id'] = $id;
@@ -35,12 +42,16 @@ class Importer extends CI_Controller {
 				$meta['hausnummer'] = 3;
 				$meta['plz'] = $csv[2];
 				$meta['ort'] = utf8_encode($csv[3]);
+                $meta['bundesland'] = utf8_encode($csv[10]);
 				$this->db->insert('genossenschaft_adresse', $meta);
+                
+                $iSets++;
 			}
+		
 			
-			//var_dump($csv);
-			
-		}	
+		}
+        
+        echo $iSets;
 	}
 	
 	public function indizieren(){
@@ -51,7 +62,7 @@ class Importer extends CI_Controller {
 		$this->db->query('DELETE FROM suche_suchwort');
 		
 		// Alle Genossenschaftsdaten auslesen
-		$this->db->select(array('gb.id', 'gb.name', 'ga.plz', 'ga.ort', 'ga.strasse'))
+		$this->db->select(array('gb.id', 'gb.name', 'gb.branche', 'ga.plz', 'ga.ort', 'ga.strasse', 'ga.bundesland'))
 				 ->from('genossenschaft_basis gb')
 				 ->join('genossenschaft_adresse ga', 'gb.id = ga.genossenschaft_id');
 		
@@ -77,12 +88,14 @@ class Importer extends CI_Controller {
 
 				// Name der Genossenschaft auftrennen (Keywords erstellen)
 				$split = str_replace(array('-', '_', '.'), ' ', strtolower(utf8_decode($res['name'])));
-				$parts = explode(' ', $split); 
+				$parts = explode(' ', $split);
 				
 				// Weitere Felder hinzufügen
 				$parts[count($parts)] = $res['plz'];
 				$parts[count($parts)] = strtolower(utf8_decode($res['ort']));
 				$parts[count($parts)] = strtolower(utf8_decode($res['strasse']));
+                $parts[count($parts)] = strtolower(utf8_decode($res['bundesland']));
+                $parts[count($parts)] = strtolower(utf8_decode($res['branche']));
 				
 				// Falls Doppelte Einträge vorhanden sind, werden diese entfernt
 				$parts = array_unique($parts);

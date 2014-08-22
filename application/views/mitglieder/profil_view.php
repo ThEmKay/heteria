@@ -34,13 +34,55 @@
     
     
 </style>
+<script src="<?php echo base_url('plugins/tinymce/js/tinymce/tinymce.min.js'); ?>"></script>
+<script>
+
+$(function()
+{
+        //$(".editable").draggable();
+        //$(".droppable").droppable();
+        
+        $(".droppable").sortable();
+        
+        $(".editable").bind('click', function(){
+        
+        var rand = Math.random();
+        
+        $(this).html('<div id="'+rand+'">'+$(this).text()+'</div>');
+
+        tinymce.init({menubar: false,
+                      language: 'de',
+                      selector: '[id="'+rand+'"]',
+                      plugins: "save",
+                      toolbar: "save",
+                      save_enablewhendirty: true,
+                      save_onsavecallback: function()
+                      {
+                          tinymce.execCommand('mceFocus', false, rand);                    
+                          tinymce.execCommand('mceRemoveControl', false, rand);
+                          tinymce.triggerSave();
+                          alert(123);
+                      }});
+        
+        
+        
+        
+        
+        
+        
+    });
+
+});
+
+
+</script>
 {profil}
 <div class="jumbotron profil-header">
     <div class="container">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <h1>
-                <img src="<?php echo base_url('data'); ?>/{shaid}/logo/{logo}" />
+                <img alt="Logo" src="<?php echo base_url(); ?>/{logo}" />
             </h1>
             <p>
                 <span>Hier ist Platz f&uuml;r einen kurzen Beschreibungstext, der ziemlich genau so lang ist, wie der aus der Vorlage! Noch nicht ganz, aber jetzt.</span>
@@ -79,23 +121,29 @@
     </div> 
     <div class="col-md-7 nopad-l container-medium">
         <h3>{name}</h3>
+        <form name="frmEdit" method="POST" action="<?php echo site_url(); ?>">
         <div class="col-md-12 nopad-l">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            <div class="editable" name="beschreibung">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
         </div>
+        </form>
     </div>
     <div class="col-md-1"></div> 
 </div>
 <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-3 container-small">
+    <div class="col-md-3 container-small droppable">
+        <div>
         <h4>EIGENE HEADLINE 1</h4>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
     </div>
-    <div class="col-md-3 container-small">
+    <div class="col-md-3 container-small droppable">
+        <div>
         <h4>EIGENE HEADLINE 2</h4>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
     </div>
-    <div class="col-md-4 container-small">
+    <div class="col-md-4 container-small droppable">
         <h4>EIGENES VIDEO?</h4>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </div>    

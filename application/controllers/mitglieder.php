@@ -112,19 +112,19 @@ class Mitglieder extends CI_Controller {
             foreach($aGeno as &$aGen){
                 $aGen['shaid'] = sha1($aGen['id']);
                 $dir = directory_map('data/'.$aGen['shaid']);
-                $aGen['logo'] = $dir['logo'][0];  
+                
+                if($dir !== false){
+                    $aGen['logo'] = 'data/'.$aGen['shaid'].'/logo/'.$dir['logo'][0];  
+                }else{
+                    $aGen['logo'] = 'gfx/blank.gif'; 
+                }
             }
                      
             $this->parser->parse('mitglieder/profil_view', array('profil' => $aGeno));
                 
         }else{
-            //redirect('mitglieder');
+            redirect('mitglieder');
         }
-        
-        
-        var_dump($aGeno);
-        
-        
     }
     
 }

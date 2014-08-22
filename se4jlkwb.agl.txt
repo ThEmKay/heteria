@@ -1,0 +1,110 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   .gitignore
+#	modified:   .htaccess
+#	modified:   application/controllers/backend/importer.php
+#	modified:   application/controllers/mitglieder.php
+#	modified:   application/models/mitglieder_model.php
+#	modified:   application/views/layout.php
+#	modified:   application/views/mitglieder/profil_view.php
+#	new file:   data/import20140822.csv
+#	new file:   gfx/blank.gif
+#	new file:   nbproject/project.properties
+#	new file:   nbproject/project.xml
+#	new file:   plugins/tinymce/LICENSE.TXT
+#	new file:   plugins/tinymce/changelog.txt
+#	new file:   plugins/tinymce/js/tinymce/langs/de.js
+#	new file:   plugins/tinymce/js/tinymce/langs/readme.md
+#	new file:   plugins/tinymce/js/tinymce/license.txt
+#	new file:   plugins/tinymce/js/tinymce/plugins/advlist/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/anchor/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/autolink/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/autoresize/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/autosave/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/bbcode/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/charmap/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/code/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/colorpicker/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/contextmenu/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/directionality/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-cool.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-cry.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-embarassed.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-foot-in-mouth.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-frown.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-innocent.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-kiss.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-laughing.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-money-mouth.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-sealed.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-smile.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-surprised.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-tongue-out.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-undecided.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-wink.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/img/smiley-yell.gif
+#	new file:   plugins/tinymce/js/tinymce/plugins/emoticons/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/example/dialog.html
+#	new file:   plugins/tinymce/js/tinymce/plugins/example/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/example_dependency/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/fullpage/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/fullscreen/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/hr/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/image/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/importcss/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/insertdatetime/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/layer/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/legacyoutput/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/link/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/lists/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/media/moxieplayer.swf
+#	new file:   plugins/tinymce/js/tinymce/plugins/media/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/nonbreaking/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/noneditable/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/pagebreak/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/paste/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/preview/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/print/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/save/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/searchreplace/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/spellchecker/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/tabfocus/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/table/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/template/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/textcolor/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/textpattern/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/visualblocks/css/visualblocks.css
+#	new file:   plugins/tinymce/js/tinymce/plugins/visualblocks/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/visualchars/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/plugins/wordcount/plugin.min.js
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/content.inline.min.css
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/content.min.css
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/readme.md
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce-small.dev.svg
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce-small.eot
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce-small.svg
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce-small.ttf
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce-small.woff
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce.dev.svg
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce.eot
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce.svg
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce.ttf
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/fonts/tinymce.woff
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/img/anchor.gif
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/img/loader.gif
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/img/object.gif
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/img/trans.gif
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/skin.ie7.min.css
+#	new file:   plugins/tinymce/js/tinymce/skins/lightgray/skin.min.css
+#	new file:   plugins/tinymce/js/tinymce/themes/modern/theme.min.js
+#	new file:   plugins/tinymce/js/tinymce/tinymce.min.js
+#
+
