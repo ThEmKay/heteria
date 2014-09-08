@@ -20,12 +20,23 @@ class Mitglieder extends CI_Controller {
     
     public function index(){
 
-    	$res = array();
+    	
+        $qry = $this->db->query('SELECT count(id) AS genos FROM genossenschaft_basis');
+        $res = $qry->result();
+        if(!empty($res)){
+            $genos = intval($res[0]->genos)-(intval($res[0]->genos)%10);
+        }
+        
+        $parse['genos'] = $genos;
+        $parse['suchergebnis'] = array();        
+        $parse['statistik'] = array();
+        
     	$this->form_validation->set_rules('fldSuche', 'Suche', 'required|trim');
     	
     	if($this->form_validation->run()){
 
-    		$suchstring = $this->input->post('fldSuche');
+    		$res = array();
+            $suchstring = $this->input->post('fldSuche');
     		$parts = explode(' ', $suchstring);    		
     		
 	    	if(count($parts) > 1){
@@ -46,7 +57,8 @@ class Mitglieder extends CI_Controller {
 	    									gb.name,
 	    									ga.plz,
 	    									ga.ort,
-	    									ga.strasse
+	    									ga.strasse,
+                                            gb.branche
 	    								 FROM
 	    									suche_suchwort sw
 		    							 INNER JOIN suche_match sm ON sw.id = sm.suchwort_id
@@ -64,7 +76,8 @@ class Mitglieder extends CI_Controller {
 	    									ga.plz,
 	    									ga.ort,
 	    									ga.strasse,
-                                            gb.id
+                                            gb.id,
+                                            gb.branche
 		    							 FROM
 		    								suche_suchwort sw
 		    							 INNER JOIN suche_match sm ON sw.id = sm.suchwort_id
@@ -74,20 +87,27 @@ class Mitglieder extends CI_Controller {
 		    								wort REGEXP \''.mysql_real_escape_string($this->input->post('fldSuche')).'\'
 		    							 GROUP BY sm.genossenschaft_id');
 	    	}
-	    	
+            
 	    	$res = $qry->result_array();
-    	}
-    	
-    	if(!empty($res)){
-    		foreach($res as $key => &$r){
-    			
-                $r['alt'] = $key%2;
-                $r['link'] = site_url('mitglieder/profil').'/'.underscore($r['name']);
+            
+            if(!empty($res)){
+                foreach($res as $key => &$r){
 
-    		}
+                    $r['alt'] = $key%2;
+                    $r['link'] = site_url('mitglieder/profil').'/'.urlencode(underscore($r['name']));
+
+                }
+            }              
+            
+            $parse['suchergebnis'] = $res;
+            
+            $parse['statistik'] = array(array('x' => count($res)));
+            
     	}
     	
-    	$this->parser->parse('mitglieder/mitglieder_view', array('suchergebnis' => $res));
+
+               
+    	$this->parser->parse('mitglieder/mitglieder_view', $parse);
     	
     	
         /*

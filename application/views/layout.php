@@ -23,6 +23,14 @@
             padding: 5px
         } 
         
+        .navbar{
+            margin-bottom: 0 !important
+        }
+        
+        .navbar-brand{
+            line-height: 55px;
+        }
+        
         .nopad-l{
             padding-left: 0px !important
         }
@@ -32,7 +40,7 @@
         }
         
         .thumbnail{
-            min-height: 120px;
+            min-height: 180px;
             background-color: #d4d4d4 !important
         }
         
@@ -52,7 +60,6 @@
         }
         
         .mainnav li.active{
-            font-weight: bold !important;
             text-decoration: underline !important
         }
         
@@ -64,19 +71,27 @@
             background-color: #eeebe4 !important;
         }        
         
-        
         .container-small{
-            margin: 0px 10px 40px 10px;
-            background-color: #ececec !important;
-            padding-bottom: 10px;
-            text-align: justify
+            /*margin: 0px 10px 40px 10px;*/
+            background-color: #f8f5ec !important;
+            padding: 0px 10px 10px 10px;
+            text-align: left;
+            margin: 0px 0px 25px 0px;
         }
         
+        .container-small p{
+            padding: 0px 5px 0px 5px;
+        }  
+        
+        .container-small h4{
+            padding: 0px 5px 0px 5px;
+        }         
+        
         .container-full{
-            margin: 0px 10px 40px 10px;
-            background-color: #ececec !important;
-            border-right: 20px solid #f8f5ec;
-            padding-bottom: 10px           
+           /* margin: 0px 10px 40px 10px;/*/
+            background-color: #f8f5ec !important;
+            /*border-right: 20px solid #f8f5ec;*/
+            /*padding-bottom: 10px*/           
         }
         
         .container-medium{
@@ -92,6 +107,7 @@
             padding-bottom: 20px;
             color: #695f56
         }
+        
         /*
         .nav li a{
             color: #fff !important
@@ -121,7 +137,12 @@
             padding: 0;
             margin: 0;
             background-color: #f8f5ec;
-            text-align: justify
+            text-align: justify;
+            font-size: 15px !important
+        }
+        
+        p{
+            font-size: 15px !important    
         }
         
         .footer-1{
@@ -171,7 +192,8 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-default maintop">
+           <!--<div class="container-fluid">
+ <nav class="navbar navbar-default maintop">
         <!--<div class="container-fluid">
             <div class="navbar-form navbar-right">
                 <a href="<?php //echo site_url('login'); ?>">
@@ -181,8 +203,8 @@
                 <input type="text" name="fldSuche" class="form-control" placeholder="Suche">
                 <span class="glyphicon glyphicon-scope form-control-feedback"></span>
             </div>
-        </div>-->
-    </nav>
+        </div>
+    </nav>-->
     <nav class="navbar navbar-default mainnav" role="navigation">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -194,24 +216,18 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-          <a class="navbar-brand" href="#">
-             <img src="<?php echo base_url('gfx/logo.png'); ?>" />
+          <a class="navbar-brand" href="<?php echo site_url(); ?>">
+             <i>heteria</i>
           </a>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="{aktiv_netzwerk}">
-                  <a href="#">DAS NETZWERK</a>
-              </li>
-              <li class="{aktiv_about}">
-                  <a href="#">&Uuml;BER UNS</a>
+              <li class="{aktiv_heteria}">
+                  <a href="<?php echo site_url('heteria'); ?>">&Uuml;BER UNS</a>
               </li>
               <li class="{aktiv_mitglieder}">
                   <a href="<?php echo site_url('mitglieder'); ?>">MITGLIEDER</a>
-              </li>
-              <li class="{aktiv_projekte}">
-                  <a href="#">PROJEKTE</a>
-              </li>              
+              </li>             
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -239,7 +255,7 @@
         </div>
         <div class="row footer-2">
             <div class="col-md-4">
-                <img src="<?php echo base_url('gfx/logo.png'); ?>" style="margin-bottom:20px" />
+                <img src="<?php echo base_url('gfx/logo.png'); ?>" style="width:170px;margin-bottom:20px" />
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
                 <h5 style="color:#fff">tele:</h5>
                 <h5 style="color:#fff">e-mail:</h5>

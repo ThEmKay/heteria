@@ -15,28 +15,65 @@ h4.media-heading{
 .alt0{
 	background-color: #efebe2
 }
+
+    .profil-header{
+        margin:-20px -15px 20px -15px;
+        background-image: url(<?php echo base_url('gfx/5662903848_1450f814c1_o.jpg'); ?>);
+        background-position: 50% 50%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .profil-header .container{
+        /*padding: 50px 0px 50px 0px*/
+    }
+    
+    .profil-header .container p{
+        padding: 10px 5px 10px 5px;
+        background-image: url(<?php echo base_url('gfx/opacity30.png'); ?>);
+        color: #fff
+    } 
+
+
 </style>
-<div class="row">
+<div class="jumbotron profil-header">
+    <div class="container">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <p>
+                <span>
+                    Durchsuchen Sie unsere Datenbank mit mehr als <span style="font-size:200%">{genos}</span> Genossenschaften!
+                </span>
+            </p>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</div>
+<div class="row" style="margin-top:20px">
     <div class="col-md-1"></div>
     <div class="col-md-10">
     	<?php echo validation_errors() ?>
     	<form name="frmSuche" role="form" action="<?php echo current_url(); ?>" method="POST">
 		  <div class="form-group">
-		    <input onchange="frmSuche.submit()" type="text" value="<?php echo set_value('fldSuche'); ?>" name="fldSuche" class="form-control input-lg" placeholder="F&uuml;tter mich">
+		    <input onchange="frmSuche.submit()" type="text" value="<?php echo set_value('fldSuche'); ?>" name="fldSuche" class="form-control input-lg" placeholder="Suchbegriff eingeben...">
 		  </div>
-		  
 		</form>
-		{suchergebnis}
-		<div class="media alt{alt}">
-		  <a class="pull-left" href="#">
-		    <img class="media-object" src="<?php echo base_url('gfx/193967.png'); ?>" alt="...">
-		  </a>
-		  <div class="media-body alt{alt}">
-		    <h4 class="media-heading"><a href="{link}">{name}</a></h4>
-		    {strasse} | {plz} {ort}
-		  </div>
-		</div>
-		{/suchergebnis}
+        {statistik}
+        <div style="text-align:right;margin-bottom:10px">
+            Es wurden {x} Genossenschaften gefunden.
+        </div>
+        {/statistik}
+        {suchergebnis}
+        <div class="media alt{alt}">
+          <a class="pull-left" href="#">
+            <img class="media-object" src="<?php echo base_url('gfx/193967.png'); ?>" alt="...">
+          </a>
+          <div class="media-body alt{alt}">
+            <h4 class="media-heading"><a href="{link}">{name}</a></h4>
+            {strasse} | {plz} {ort} - {branche}
+          </div>
+        </div>
+        {/suchergebnis}
     </div>
     <!-- 
     <div class="col-md-10">

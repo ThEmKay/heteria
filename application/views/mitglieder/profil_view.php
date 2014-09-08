@@ -4,11 +4,12 @@
         margin:-20px -15px 20px -15px;
         background-image: url(<?php echo base_url('gfx/_MG_9690-als-Smartobjekt-1.jpg'); ?>);
         background-position: 50% 50%;
-        background-size: 100%      
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
     
     .profil-header .container{
-        padding: 50px 0px 50px 0px
+        /*padding: 50px 0px 50px 0px*/
     }
     
     .profil-header .container p{
