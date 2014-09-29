@@ -51,7 +51,7 @@
         
         .mainnav{
             background-color: #e6e6de !important;
-            border-radius: 0;
+            border-radius: 0
         }
         
         .mainnav li{
@@ -188,6 +188,15 @@
             background-color: #615350;
             padding: 30px
         }
+        
+        .footer-2 a{
+            color: #fff
+        }
+        
+        .footer-2 a:hover{
+            text-decoration:underline;
+            color: #fff
+        }        
           
     </style>
   </head>
@@ -205,6 +214,7 @@
             </div>
         </div>
     </nav>-->
+    <div style="background-color:#4a433d;height:30px">&nbsp;</div>
     <nav class="navbar navbar-default mainnav" role="navigation">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -216,12 +226,12 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-          <a class="navbar-brand" href="<?php echo site_url(); ?>">
-             <i>heteria</i>
-          </a>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+              <li class="{aktiv_}">
+                  <a href="<?php echo site_url(''); ?>">STARTSEITE</a>
+              </li>                
               <li class="{aktiv_heteria}">
                   <a href="<?php echo site_url('heteria'); ?>">&Uuml;BER UNS</a>
               </li>
@@ -255,31 +265,28 @@
         </div>
         <div class="row footer-2">
             <div class="col-md-4">
-                <img src="<?php echo base_url('gfx/logo.png'); ?>" style="width:170px;margin-bottom:20px" />
+                <img src="<?php echo base_url('gfx/logo.png'); ?>" style="margin-bottom:20px" />
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
                 <h5 style="color:#fff">tele:</h5>
                 <h5 style="color:#fff">e-mail:</h5>
             </div>
             <div class="col-md-2">&nbsp;</div>
             <div class="col-md-2">
-                <h5>Netzwerk</h5>
+                <h5>Portal</h5>
                 <ul class="sitemap-list">
-                    <li>&Uuml;ber uns</li>
-                    <li>FAQ</li>
-                    <li>Kontakt</li>
-                    <li>Mitgliedschaft</li>
-                    <li>Impressum</li>
+                    <li><a href="<?php echo site_url('heteria'); ?>">&Uuml;ber uns</a></li>
+                    <li><a href="<?php echo site_url('mitglieder'); ?>">Mitglieder</li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <h5>Genossenschaften</h5>
+                <!--<h5>Genossenschaften</h5>
                 <ul class="sitemap-list">
                     <li>Navi 1</li>
                     <li>Navi 2</li>
                     <li>Navi 3</li>
                     <li>Navi 4</li>
                     <li>Navi 5</li>
-                </ul>
+                </ul>-->
             </div>
         </div>
         <div class="row footer-3"></div>

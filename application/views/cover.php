@@ -1,9 +1,9 @@
 <script type="text/javascript"> 
 $(function(){
-   $('#carousel-example-generic').css('height', (window.innerHeight)-($('.navbar').height()));
+   $('#carousel-example-generic').css('height', (window.innerHeight)-($('.navbar').height()+30));
    
    $('.carousel-inner').children().each(function(){
-        $(this).children('[name="picture"]').css('height', (window.innerHeight)-($('.navbar').height()));
+        $(this).children('[name="picture"]').css('height', (window.innerHeight)-($('.navbar').height()+30));
    });
        
 });   
@@ -19,15 +19,15 @@ $(function(){
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
-                <div name="picture" style="height:300px;width:100%;background-image: url(<?php echo site_url('gfx/luna_background.jpg'); ?>)">
+                <div name="picture" style="background-size:100%;height:300px;width:100%;background-image: url(<?php echo site_url('gfx/9057004391_63c4a41628_o.png'); ?>)">
                     &nbsp;
                 </div>
                 <div class="carousel-caption">
-                    Das ist ein sch&ouml;nes Bild!
+                    &nbsp;
                 </div>
             </div>
             <div class="item">
-                <div name="picture" style="height:300px;width:100%;background-image: url(<?php echo site_url('gfx/nazIMG_5768.jpg'); ?>)">
+                <div name="picture" style="background-size:100%;height:300px;width:100%;background-image: url(<?php echo site_url('gfx/nazIMG_5768.jpg'); ?>)">
                     &nbsp;
                 </div>
                 <div class="carousel-caption">

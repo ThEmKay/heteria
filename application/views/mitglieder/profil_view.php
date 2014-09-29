@@ -35,44 +35,13 @@
     
     
 </style>
-<script src="<?php echo base_url('plugins/tinymce/js/tinymce/tinymce.min.js'); ?>"></script>
+<!--<script src="<?php echo base_url('plugins/tinymce/js/tinymce/tinymce.min.js'); ?>"></script>-->
+<script src="//cdn.ckeditor.com/4.4.4/basic/ckeditor.js"></script>
 <script>
 
 $(function()
 {
-        //$(".editable").draggable();
-        //$(".droppable").droppable();
-        
-        $(".droppable").sortable();
-        
-        $(".editable").bind('click', function(){
-        
-        var rand = Math.random();
-        
-        $(this).html('<div id="'+rand+'">'+$(this).text()+'</div>');
-
-        tinymce.init({menubar: false,
-                      language: 'de',
-                      selector: '[id="'+rand+'"]',
-                      plugins: "save",
-                      toolbar: "save",
-                      save_enablewhendirty: true,
-                      save_onsavecallback: function()
-                      {
-                          tinymce.execCommand('mceFocus', false, rand);                    
-                          tinymce.execCommand('mceRemoveControl', false, rand);
-                          tinymce.triggerSave();
-                          alert(123);
-                      }});
-        
-        
-        
-        
-        
-        
-        
-    });
-
+    CKEDITOR.replace('beschreibung');
 });
 
 
@@ -122,11 +91,9 @@ $(function()
     </div> 
     <div class="col-md-7 nopad-l container-medium">
         <h3>{name}</h3>
-        <form name="frmEdit" method="POST" action="<?php echo site_url(); ?>">
         <div class="col-md-12 nopad-l">
-            <div class="editable" name="beschreibung">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+            <textarea id="beschreibung">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</textarea>
         </div>
-        </form>
     </div>
     <div class="col-md-1"></div> 
 </div>
