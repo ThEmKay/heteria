@@ -23,9 +23,21 @@ class Mitglieder_model extends CI_Model {
         //$oQry = $this->db->select('*')->from('tbl_genossenschaft')->where('LOWER(name)', mysql_real_escape_string(strtolower(urldecode($sName))));
         
         // Lösung zum Zeigen
-        $oQry = $this->db->select('*')->from('genossenschaft_basis')->where('LOWER(name)', mysql_real_escape_string(strtolower(urldecode($sName))));
+        $oQry = $this->db->select('*')
+                         ->from('genossenschaft_basis gb')
+                         ->join('genossenschaft_profil gp', 'gp.basis_id = gb.id', 'inner')
+                         ->where('LOWER(name)', mysql_real_escape_string(strtolower(urldecode($sName))));
                 
         return $oQry->get()->result_array();
+    }
+    
+    public function getProfilinhalte($iBasisId){
+    
+        $this->db->select('*')
+                 ->from('genossenschaft_profil_inhalt')
+                 ->where('basis_id', intval($iBasisId));
+        
+        return $this->db->get()->result();
     }
     
 }

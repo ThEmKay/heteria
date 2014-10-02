@@ -1,0 +1,22 @@
+.alert{
+    margin-bottom: 10px;
+    padding: 5px
+} 
+
+.nopad-l{
+    padding-left: 0px !important
+}
+
+.nopad-r{
+    padding-right: 0px !important
+}
+
+h4{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #695f56
+}
+
+p{
+    font-size: 15px !important    
+}

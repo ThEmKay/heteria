@@ -14,6 +14,7 @@ class Mitglieder extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+        $this->load->library('protector');
         $this->load->model('mitglieder_model', 'mm');
         $this->load->helper(array('inflector', 'directory'));
     }
@@ -127,6 +128,7 @@ class Mitglieder extends CI_Controller {
                 
         $aGeno = $this->mm->getGenossenschaft(humanize($sPermalink));
         
+                
         if(!empty($aGeno)){
             
             foreach($aGeno as &$aGen){
@@ -139,7 +141,11 @@ class Mitglieder extends CI_Controller {
                     $aGen['logo'] = 'gfx/blank.gif'; 
                 }
             }
-                     
+                 
+            echo "<pre>";
+            var_dump($this->mm->getProfilinhalte($aGeno[0]['basis_id']));
+            echo "</pre>";
+            
             $this->parser->parse('mitglieder/profil_view', array('profil' => $aGeno));
                 
         }else{

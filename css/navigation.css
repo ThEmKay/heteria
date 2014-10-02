@@ -1,0 +1,46 @@
+.navbar-brand{
+    margin: 0px 10px 0px 10px !important;
+    line-height: 55px;
+}
+
+.maintop{
+    background-color: #efebe2 !important;
+    margin-bottom: 0 !important
+}
+
+.mainnav{
+    background-color: #e6e6de !important;
+    border-radius: 0;
+    margin-top: 0px
+}
+
+.mainnav li{
+    padding: 15px 0px 15px 0px;
+    font-size: 100%
+}
+
+.navbar-nav li a{
+    font-size: 100%;
+    color: #1b1b1d !important
+}
+
+.mainnav li.active{
+    text-decoration: underline !important
+}
+
+.subnav{
+    background-color: #eeebe4 !important;
+}
+
+.navbar{
+    margin-bottom: 0 !important
+}
+
+.sprache li{
+    padding: 5px 0px 5px 0px;    
+}
+
+.sprache li a{
+    padding-left: 5px;
+    color: #111
+}

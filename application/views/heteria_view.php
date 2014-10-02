@@ -21,7 +21,6 @@ function getAge($tag, $monat, $jahr){
     return $lebensjahre;
 }
 
-
 ?>
 <div class="row" style="margin-top:20px">
     <div class="col-lg-4 col-sm-6 col-md-4 container-small">

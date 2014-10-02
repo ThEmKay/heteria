@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>&copy; 2014</title>
     <!-- Bootstrap -->
-    <link href="<?php echo base_url('bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!--<link href="<?php echo base_url('bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -16,206 +17,120 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <!-- Zusätzliches CSS -->
+    <link href="<?php echo base_url('css/layout.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/navigation.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('css/flaggen.css'); ?>" rel="stylesheet">
     <style>
-        
-        .alert{
-            margin-bottom: 10px;
-            padding: 5px
-        } 
-        
-        .navbar{
-            margin-bottom: 0 !important
-        }
-        
-        .navbar-brand{
-            line-height: 55px;
-        }
-        
-        .nopad-l{
-            padding-left: 0px !important
-        }
-        
-        .nopad-r{
-            padding-right: 0px !important
-        }
-        
-        .thumbnail{
-            min-height: 180px;
-            background-color: #d4d4d4 !important
-        }
-        
-        .maintop{
-            background-color: #efebe2 !important;
-            margin-bottom: 0 !important
-        }
-        
-        .mainnav{
-            background-color: #e6e6de !important;
-            border-radius: 0
-        }
-        
-        .mainnav li{
-            padding: 15px 0px 15px 0px;
-            font-size: 110%
-        }
-        
-        .mainnav li.active{
-            text-decoration: underline !important
-        }
-        
-        .navbar-brand{
-            margin: 0px 10px 0px 10px !important
-        }
-        
-        .subnav{
-            background-color: #eeebe4 !important;
-        }        
-        
-        .container-small{
-            /*margin: 0px 10px 40px 10px;*/
-            background-color: #f8f5ec !important;
-            padding: 0px 10px 10px 10px;
-            text-align: left;
-            margin: 0px 0px 25px 0px;
-        }
-        
-        .container-small p{
-            padding: 0px 5px 0px 5px;
-        }  
-        
-        .container-small h4{
-            padding: 0px 5px 0px 5px;
-        }         
-        
-        .container-full{
-           /* margin: 0px 10px 40px 10px;/*/
-            background-color: #f8f5ec !important;
-            /*border-right: 20px solid #f8f5ec;*/
-            /*padding-bottom: 10px*/           
-        }
-        
-        .container-medium{
-            margin: 0px 10px 40px 10px;
-            background-color: transparent !important;
-            padding-bottom: 10px;
-            text-align: justify;
-            vertical-align: middle;
-        }
-        
-        h4{
-            padding-top: 20px;
-            padding-bottom: 20px;
-            color: #695f56
-        }
-        
-        /*
-        .nav li a{
-            color: #fff !important
-        }
-        
-        .nav li:hover{
-            background-color: green !important
-        }
-        
-        .nav li.active a{
-            background-color: #9FF781 !important;
-            color: #333 !important
-        } 
-        
-        .nav li:active{
-            background-color: #9FF781 !important;
-            color: #333 !important
-        }        
-        */
-        
-        .content{
-            min-height:300px;
-            background-color:#c0c0c0
-        }
-        
-        body{
-            padding: 0;
-            margin: 0;
-            background-color: #f8f5ec;
-            text-align: justify;
-            font-size: 15px !important
-        }
-        
-        p{
-            font-size: 15px !important    
-        }
-        
-        .footer-1{
-            margin-top: 30px;
-            background-color: #4a433d;
-            padding: 0px 80px 0px 80px;
-            color: #fff;
-            text-align: center
-        }
-        
-        .footer-1 div{
-            margin: 30px 0px 30px 0px
-        }
-        
-        .footer-2{
-            background-color: #6b5c59;
-            padding: 30px 120px 30px 120px;
-            color: #fff;
-            text-align: left
-        }
-        
-        .footer-2 h5{
-            color: #413936;
-            font-size: 120%
-        }
+    @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
+    @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
         
         
+    .thumbnail{
+        min-height: 180px;
+        background-color: #d4d4d4 !important
+    }
+
+    .container-small{
+        /*margin: 0px 10px 40px 10px;*/
+        background-color: #fff !important;
+        padding: 0px 10px 10px 10px;
+        text-align: left;
+        margin: 0px 0px 25px 0px;
+    }
+
+    .container-small p{
+        /*padding: 0px 5px 0px 5px;*/
+    }  
+
+    .container-small h4{
+        /*padding: 0px 5px 0px 5px;*/
+    }         
+
+    .container-full{
+       /* margin: 0px 10px 40px 10px;/*/
+        background-color: #fff !important;
+        /*border-right: 20px solid #f8f5ec;*/
+        /*padding-bottom: 10px*/           
+    }
+
+    .container-medium{
+        margin: 0px 10px 40px 10px;
+        background-color: transparent !important;
+        padding-bottom: 10px;
+        text-align: justify;
+        vertical-align: middle;
+    }
+
+    .content{
+        background-color: #fff;
+        padding-bottom: 40px;
+        margin-top: 80px
+    }
+    
+    .content .inner{
+        margin: 5px 0px 15px 0px
+    }
+    
+
         
-        .sitemap-list{
-            font-family: 'Tahoma';
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-            color: #fff;
-            font-size: 90%
-        }
+    body{
+        padding: 0;
+        margin: 0;
+        background-color: #615350;
+        text-align: justify;
+        font-size: 18px !important;
+        color: #1d1d1b !important;
+        font-family: 'PT Sans', sans-serif;
+    }
+    
+    h1{
+        font-size: 36px !important;
+        font-weight: bold !important
+    }
+    
+    h2{
+        font-size: 18px !important;
+        font-weight: bold !important;
+        letter-spacing: 1px;
+        margin-bottom: 10px !important
+    }
+    
+    .inner{
+        margin-top: 20px !important
+    }
         
-        .sitemap-list li{
-            margin-bottom: 5px
-        }
-        
-        .footer-3{
-            background-color: #615350;
-            padding: 30px
-        }
-        
-        .footer-2 a{
-            color: #fff
-        }
-        
-        .footer-2 a:hover{
-            text-decoration:underline;
-            color: #fff
-        }        
-          
     </style>
   </head>
   <body>
-           <!--<div class="container-fluid">
- <nav class="navbar navbar-default maintop">
-        <!--<div class="container-fluid">
-            <div class="navbar-form navbar-right">
-                <a href="<?php //echo site_url('login'); ?>">
-                    <button type="submit" class="btn btn-default">
-                         Kundenlogin
-                    </button></a>
-                <input type="text" name="fldSuche" class="form-control" placeholder="Suche">
-                <span class="glyphicon glyphicon-scope form-control-feedback"></span>
-            </div>
-        </div>
-    </nav>-->
-    <div style="background-color:#4a433d;height:30px">&nbsp;</div>
-    <nav class="navbar navbar-default mainnav" role="navigation">
+      <script type="">
+      $(function(){
+      
+        $(document).on('scroll', function(){
+
+           if(($(this).scrollTop() >= 100)){
+               
+               $('#navigation').css({'margin-top': '-75px'}, 100);
+               
+               $('#navigation').bind('mouseover', function(){
+                  $(this).css({'margin-top': '0px'}, 100); 
+               });
+
+               $('#navigation').bind('mouseout', function(){
+                  $(this).css({'margin-top': '-75px'}, 100); 
+               });            
+           }else if(($(this).scrollTop() <= 100)){
+               $('#navigation').css({'margin-top': '0px'});
+               $('#navigation').unbind('mouseover');
+               $('#navigation').unbind('mouseout');
+           }
+        });
+      
+       
+          
+      });
+      </script>    
+    <nav id="navigation" class="navbar navbar-default mainnav navbar-fixed-top" role="navigation">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -230,21 +145,41 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="{aktiv_}">
-                  <a href="<?php echo site_url(''); ?>">STARTSEITE</a>
+                  <a href="<?php echo site_url(''); ?>">Startseite</a>
               </li>                
               <li class="{aktiv_heteria}">
-                  <a href="<?php echo site_url('heteria'); ?>">&Uuml;BER UNS</a>
+                  <a href="<?php echo site_url('heteria'); ?>">&Uuml;ber Uns</a>
               </li>
               <li class="{aktiv_mitglieder}">
-                  <a href="<?php echo site_url('mitglieder'); ?>">MITGLIEDER</a>
+                  <a href="<?php echo site_url('mitglieder'); ?>">Mitglieder</a>
               </li>             
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {login_bereich}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <span class="flag flag-Germany"></span>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu sprache" role="menu">
+                        <li>
+                            <a>
+                                <span class="flag flag-Germany"></span> Deutsch
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="flag flag-United-Kingdom"></span> Englisch
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>  
 
-      
-    <div class="container-fluid">
+    <div class="container-fluid content">
        {content}
     </div>
     <div class="container-fluid">
@@ -292,7 +227,7 @@
         <div class="row footer-3"></div>
     </div>      
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?php echo base_url('bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
