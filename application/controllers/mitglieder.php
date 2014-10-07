@@ -113,6 +113,9 @@ class Mitglieder extends CI_Controller {
     
     public function profil($sPermalink = ''){
         
+        
+
+        
         // Genossenschaftsdaten werden ermittelt        
         $aGeno = $this->mm->getGenossenschaft(humanize($sPermalink));
         
@@ -139,16 +142,11 @@ class Mitglieder extends CI_Controller {
             //
             foreach($aGeno as &$aGen){
                 $aGen['shaid'] = sha1($aGen['id']);
-                $dir = directory_map('data/'.$this->session->userdata('permaname').'/');
-                                
-                $aGen['logo'] = base_url('data/'.$this->session->userdata('permaname').'/'.$dir[0]);
-                
-                
+                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/');//.underscore($aGeno[0]['name']));
+                $aGen['logo'] = base_url('data/'.underscore($aGeno[0]['name']).'/'.$dir[0]);  
             }
                  
-           /* echo "<pre>";
-            var_dump($this->mm->getProfilinhalte($aGeno[0]['basis_id']));
-            echo "</pre>";*/
+
             $aInhalte = $this->mm->getProfilinhalte($aGeno[0]['basis_id']);
             
             $aGeno[0]['inhalte'] = $aInhalte;

@@ -7,10 +7,13 @@ class Importer extends CI_Controller {
 	 */
 	public function index(){
 		
-		$this->db->query('DELETE FROM genossenschaft_basis');
+        delete_files('./data/', true);
+		$this->db->query('DELETE FROM genossenschaft');
+        $this->db->query('DELETE FROM genossenschaft_basis');
 		$this->db->query('DELETE FROM genossenschaft_adresse');
+        $this->db->query('DELETE FROM genossenschaft_profil');
 		
-		$file = fopen(base_url('data/import20140822.csv'), 'r');
+		$file = fopen(base_url('import20140822.csv'), 'r');
 		
 		// Übrspringt den ersten Datensatz (Tabellenkopf)
 		fgetcsv($file);
@@ -30,14 +33,27 @@ class Importer extends CI_Controller {
                     $id = 1;
                 }
 				
+                /*
+                 * IMPORTERANPASSUNGEN FOLGEN IN NEUEM BRANCH
+                 * 
+                 * 
+                 */
+                
+                // Neuer Basisdatensatz
 				$insert['id'] = $id;
 				$insert['name'] = trim(utf8_encode($csv[0]));
 				$insert['land'] = 'de';
                 $insert['branche'] = utf8_encode($csv[9]);
 				$this->db->insert('genossenschaft_basis', $insert);
+                
+                // Genossenschaftstabelle füllen (Login-Daten)
+                $login['passwort'] = sha1('changeme'.$id);
+                $login['registriert_am'] = date('Y-m-d H:i:s');
+                $login['basis_id'] = $id;
+                $this->db->insert('genossenschaft', $login);
 				
+                // Adressdaten befüllen
 				$meta['genossenschaft_id'] = $id;
-				//$strasse = explode(' ', $csv[1]);
 				$meta['strasse'] = utf8_encode($csv[1]);
 				$meta['hausnummer'] = 3;
 				$meta['plz'] = $csv[2];
@@ -45,6 +61,16 @@ class Importer extends CI_Controller {
                 $meta['bundesland'] = utf8_encode($csv[10]);
 				$this->db->insert('genossenschaft_adresse', $meta);
                 
+                // Leeres Genossenschaftsprofil anlegen
+                $prof['basis_id'] = $id;
+                $prof['titel'] = $insert['name'];
+                $prof['text'] = utf8_encode('Kurzer Einleitungstext über diese tolle Genossenschaft.');
+                $this->db->insert('genossenschaft_profil', $prof);
+                
+                mkdir('./data/'.underscore(utf8_decode($insert['name'])));
+                mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/bilder');
+                copy('./gfx/default.png', './data/'.underscore(utf8_decode($insert['name'])).'/default.png');
+                                
                 $iSets++;
 			}
 		
