@@ -37,6 +37,7 @@ class Login extends CI_Controller {
                     $this->session->set_userdata('branche', $oData->branche);
                     $this->session->set_userdata('land', $oData->land);
                     $this->session->set_userdata('basis_id', $oData->basis_id);
+                    $this->session->set_userdata('permaname', underscore($oData->name));
                     
                     $this->login_model->refresh($oData->nummer);
                     

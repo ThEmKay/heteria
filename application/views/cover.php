@@ -1,11 +1,12 @@
 <script type="text/javascript"> 
-$(function(){
+/*
+    $(function(){
    $('#carousel-example-generic').css('height', (window.innerHeight)-($('.navbar').height()+30));
    
    $('.carousel-inner').children().each(function(){
         $(this).children('[name="picture"]').css('height', (window.innerHeight)-($('.navbar').height()+30));
    });     
-});   
+}); */  
 </script>
 <div class="row startseite" style="margin-bottom:40px">
     <div class="col-md-12 container-full" style="padding:0 !important">
@@ -18,7 +19,7 @@ $(function(){
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
-                <div name="picture" style="background-size:100%;height:300px;width:100%;background-image: url(<?php echo site_url('gfx/9057004391_63c4a41628_o.png'); ?>)">
+                <div name="picture" style="background-size:100%;height:500px;background-image: url(<?php echo site_url('gfx/9057004391_63c4a41628_o.png'); ?>)">
                     &nbsp;
                 </div>
                 <div class="carousel-caption">
@@ -26,7 +27,7 @@ $(function(){
                 </div>
             </div>
             <div class="item">
-                <div name="picture" style="background-size:100%;height:300px;width:100%;background-image: url(<?php echo site_url('gfx/nazIMG_5768.jpg'); ?>)">
+                <div name="picture" style="background-size:100%;height:500px;width:100%;background-image: url(<?php echo site_url('gfx/nazIMG_5768.jpg'); ?>)">
                     &nbsp;
                 </div>
                 <div class="carousel-caption">

@@ -21,7 +21,6 @@ class Mitglieder extends CI_Controller {
     
     public function index(){
 
-    	
         $qry = $this->db->query('SELECT count(id) AS genos FROM genossenschaft_basis');
         $res = $qry->result();
         if(!empty($res)){
@@ -110,46 +109,55 @@ class Mitglieder extends CI_Controller {
                
     	$this->parser->parse('mitglieder/mitglieder_view', $parse);
     	
-    	
-        /*
-    	$aGeno = $this->mm->getGenossenschaften();
-        
-        foreach($aGeno as &$aGen){
-            $aGen['shaid'] = sha1($aGen['id']);
-            $dir = directory_map('data/'.$aGen['shaid']);
-            $aGen['logo'] = $dir['logo'][0];
-            $aGen['permalink'] = underscore($aGen['name']);
-        }*/
-
-        //$this->parser->parse('mitglieder/mitglieder_view', array('genossenschaften' => $aGeno));
     }
     
     public function profil($sPermalink = ''){
-                
+        
+        // Genossenschaftsdaten werden ermittelt        
         $aGeno = $this->mm->getGenossenschaft(humanize($sPermalink));
         
-                
+        // Wenn die Datenbankabfrage erfolgreich war, gehts weiter
         if(!empty($aGeno)){
             
+            $this->load->library('user_agent');
+            // Prüfen, ob die aufgerufene Profilseite die eigene ist (Session) UND nicht von einem
+            // mobilen Endgerät betrachtet wird
+            if($aGeno[0]['id'] === $this->session->userdata('basis_id') &&
+               !$this->agent->is_mobile()){
+                $aGeno[0]['admin'] = true;
+                // Token für Ajax Requests wird erzeugt
+                $aGeno[0]['token'] = sha1($this->session->userdata('basis_id').'heera1379aFgH');
+                // Parsing der einzelnen Komponenten zum Bearbeiten der Profilseite
+                $aGeno[0]['admin_javascript'] = $this->parser->parse('mitglieder/profil_admin_javascript_view', array('token' => $aGeno[0]['token']), true);
+                $aGeno[0]['admin_panels'] = $this->parser->parse('mitglieder/profil_admin_panels_view', array(), true);;
+            }else{
+                $aGeno[0]['admin'] = false;
+                $aGeno[0]['admin_javascript'] = '';
+                $aGeno[0]['admin_panels'] = '';
+            }
+            
+            //
             foreach($aGeno as &$aGen){
                 $aGen['shaid'] = sha1($aGen['id']);
-                $dir = directory_map('data/'.$aGen['shaid']);
+                $dir = directory_map('data/'.$this->session->userdata('permaname').'/');
+                                
+                $aGen['logo'] = base_url('data/'.$this->session->userdata('permaname').'/'.$dir[0]);
                 
-                if($dir !== false){
-                    $aGen['logo'] = 'data/'.$aGen['shaid'].'/logo/'.$dir['logo'][0];  
-                }else{
-                    $aGen['logo'] = 'gfx/blank.gif'; 
-                }
+                
             }
                  
-            echo "<pre>";
+           /* echo "<pre>";
             var_dump($this->mm->getProfilinhalte($aGeno[0]['basis_id']));
-            echo "</pre>";
+            echo "</pre>";*/
+            $aInhalte = $this->mm->getProfilinhalte($aGeno[0]['basis_id']);
+            
+            $aGeno[0]['inhalte'] = $aInhalte;
             
             $this->parser->parse('mitglieder/profil_view', array('profil' => $aGeno));
                 
         }else{
-            redirect('mitglieder');
+            // Wenn nicht erfolgt automatische Weiterleitung
+            redirect('oops');
         }
     }
     

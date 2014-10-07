@@ -17,6 +17,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.50/jquery.form.min.js"></script>
     <!-- Zusätzliches CSS -->
     <link href="<?php echo base_url('css/layout.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('css/navigation.css'); ?>" rel="stylesheet">
@@ -103,7 +104,7 @@
     </style>
   </head>
   <body>
-      <script type="">
+      <script type="text/javascript">
       $(function(){
       
         $(document).on('scroll', function(){
@@ -201,16 +202,17 @@
         <div class="row footer-2">
             <div class="col-md-4">
                 <img src="<?php echo base_url('gfx/logo.png'); ?>" style="margin-bottom:20px" />
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-                <h5 style="color:#fff">tele:</h5>
-                <h5 style="color:#fff">e-mail:</h5>
+                <p><span class="glyphicon glyphicon-earphone"></span> 0160 - 66 77 888</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> hallo@heteria.de</p>
             </div>
             <div class="col-md-2">&nbsp;</div>
             <div class="col-md-2">
                 <h5>Portal</h5>
                 <ul class="sitemap-list">
+                    <li><a href="<?php echo site_url(''); ?>">Startseite</a></li>
                     <li><a href="<?php echo site_url('heteria'); ?>">&Uuml;ber uns</a></li>
                     <li><a href="<?php echo site_url('mitglieder'); ?>">Mitglieder</li>
+                    <li style="margin-top:22px"><a href="<?php echo site_url('impressum'); ?>">Impressum</li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -226,7 +228,6 @@
         </div>
         <div class="row footer-3"></div>
     </div>      
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

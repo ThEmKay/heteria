@@ -6,19 +6,17 @@
  */
 
 /**
- * Description of index
+ * Description of oops
  *
  * @author Seb
  */
-class Main extends CI_Controller {
-    
+class Oops extends CI_Controller {
     
     public function index(){
         
-        $this->parser->parse('layout', array('content' => $this->parser->parse('start_view.php', array(), true)));
+        $this->parser->parse('404_view', array());
         
     }
-    
     
 }
 
