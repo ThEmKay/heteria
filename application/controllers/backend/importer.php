@@ -30,6 +30,12 @@ class Importer extends CI_Controller {
                     $id = 1;
                 }
 				
+                /*
+                 * IMPORTERANPASSUNGEN FOLGEN IN NEUEM BRANCH
+                 * 
+                 * 
+                 */
+                
 				$insert['id'] = $id;
 				$insert['name'] = trim(utf8_encode($csv[0]));
 				$insert['land'] = 'de';
