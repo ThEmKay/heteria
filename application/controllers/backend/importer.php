@@ -69,7 +69,10 @@ class Importer extends CI_Controller {
                 
                 mkdir('./data/'.underscore(utf8_decode($insert['name'])));
                 mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/bilder');
-                copy('./gfx/default.png', './data/'.underscore(utf8_decode($insert['name'])).'/default.png');
+                mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/logo');
+                mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/mood');
+                copy('./gfx/default.png', './data/'.underscore(utf8_decode($insert['name'])).'/logo/default.png');
+                copy('./gfx/default_mood.jpg', './data/'.underscore(utf8_decode($insert['name'])).'/default_mood.jpg');
                                 
                 $iSets++;
 			}

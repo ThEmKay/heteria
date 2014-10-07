@@ -10,7 +10,8 @@ function test(){
 }
 
 function bind(){
-    $('.editable').bind('mouseover', function(){
+    
+     $('.editable').bind('mouseover', function(){
         edit = $(this);
         $('#profil-content-panel').css({top: $(this).offset().top-$('#profil-content-panel').height()+2,
                                         left: $(this).offset().left+$(this).width()-$('#profil-content-panel').width()});
@@ -48,7 +49,22 @@ $(function(){
     $('#logo').bind('mouseout', function(){
         $('#profil-btn-logo-upload').hide();
     });
-    /*
+    /**
+     * MOUSEOVER BINDS - Titelbild
+     */
+    $('#titelbild').bind('mouseover', function(){
+        $('#profil-btn-titelbild-upload').css({top: $('#titelbild').offset().top+5,
+                                               left: $('#titelbild').offset().left+5});
+        $('#profil-btn-titelbild-upload').show();       
+    });
+    $('#profil-btn-titelbild-upload').bind('mouseover', function(){
+        $(this).show();
+    });     
+    $('#titelbild').bind('mouseout', function(){
+        $('#profil-btn-titelbild-upload').hide();
+    });    
+    
+    /**
      * MOUSEOVER BINDS - Neuer Content 
      */
     $('#profil-content-neu-uber').bind('mouseover', function(){
@@ -186,6 +202,7 @@ $(function(){
         bind();
     });
     
+    
     $('#abort').bind('click', function(){
         myNicEditor.removeInstance(edit.attr('id'));
         
@@ -197,6 +214,10 @@ $(function(){
     });
     
     
+    /**
+     * LOGO HOCHLADEN
+     * 
+     */
     $('#profil-btn-logo-upload').bind('click', function(){
         $('#logo-upload').trigger('click');
         $('#profil-btn-logo-upload').hide();
@@ -211,18 +232,51 @@ $(function(){
         $(this).ajaxSubmit({success: function(datastring){
                                 data = $.parseJSON(datastring);
                                 if(data.success){
-                                    $('#profil-logo-img').attr('src', '../../data/heteria_eg/'+data.file);
-                                    $('#message').html('<div class="alert alert-success" role="alert">Logo erfolgreich hochgeladen!</div>');
-                                    $('#message').show();
-                                    setInterval("$('#message').hide()", 3000);                                    
+                                    $('#message').html('<div class="alert alert-success" role="alert">Logo erfolgreich hochgeladen!</div>');                                   
                                 }else{
+                                    
                                     $('#message').html(data.message);
                                 }
+                                $('#profil-logo-img').attr('src', '../../data/{permaname}/'+data.file);                    
+                                $('#message').show();
+                                setInterval("$('#message').hide()", 3000);                                  
                              }
                             });
         return false;
     });
     
+    
+    /**
+     * TITELBILD HOCHLADEN
+     * 
+     */
+    $('#profil-btn-titelbild-upload').bind('click', function(){
+        $('#titelbild-upload').trigger('click');
+        $('#profil-btn-titelbild-upload').hide();
+    });
+    
+    $('#titelbild-upload').bind('change', function(){
+        $('#titelbild').css('background-size', '3%');
+        $('#titelbild').css('background-image', 'url(../../gfx/ajax-loader-big.gif)');
+    });
+    
+    $('#profil-titelbild-upload').submit(function(){
+        $('#message').css({top: $(this).offset().top+30});
+        $(this).ajaxSubmit({success: function(datastring){
+                                data = $.parseJSON(datastring);                                
+                                if(data.success){
+                                    $('#message').html('<div class="alert alert-success" role="alert">Titelbild erfolgreich hochgeladen!</div>');                                   
+                                }else{
+                                    $('#message').html(data.message);
+                                }
+                                $('#titelbild').css('background-size', '100%');
+                                $('#titelbild').css('background-image', 'url(../../data/{permaname}/mood/'+data.file+')');                                
+                                $('#message').show();
+                                setInterval("$('#message').hide()", 3000);                                
+                             }
+                            });
+        return false;
+    });    
 
     
     

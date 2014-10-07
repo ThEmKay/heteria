@@ -113,9 +113,6 @@ class Mitglieder extends CI_Controller {
     
     public function profil($sPermalink = ''){
         
-        
-
-        
         // Genossenschaftsdaten werden ermittelt        
         $aGeno = $this->mm->getGenossenschaft(humanize($sPermalink));
         
@@ -131,7 +128,9 @@ class Mitglieder extends CI_Controller {
                 // Token für Ajax Requests wird erzeugt
                 $aGeno[0]['token'] = sha1($this->session->userdata('basis_id').'heera1379aFgH');
                 // Parsing der einzelnen Komponenten zum Bearbeiten der Profilseite
-                $aGeno[0]['admin_javascript'] = $this->parser->parse('mitglieder/profil_admin_javascript_view', array('token' => $aGeno[0]['token']), true);
+                $aGeno[0]['admin_javascript'] = $this->parser->parse('mitglieder/profil_admin_javascript_view',
+                                                                     array('token' => $aGeno[0]['token'],
+                                                                           'permaname' => underscore($aGeno[0]['name'])), true);
                 $aGeno[0]['admin_panels'] = $this->parser->parse('mitglieder/profil_admin_panels_view', array(), true);;
             }else{
                 $aGeno[0]['admin'] = false;
@@ -142,11 +141,13 @@ class Mitglieder extends CI_Controller {
             //
             foreach($aGeno as &$aGen){
                 $aGen['shaid'] = sha1($aGen['id']);
-                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/');//.underscore($aGeno[0]['name']));
-                $aGen['logo'] = base_url('data/'.underscore($aGeno[0]['name']).'/'.$dir[0]);  
+                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/logo');
+                $aGen['logo'] = base_url('data/'.underscore($aGeno[0]['name']).'/logo/'.$dir[0]);
+                
+                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/mood/');
+                $aGen['mood'] = base_url('data/'.underscore($aGeno[0]['name']).'/mood/'.$dir[0]);
             }
-                 
-
+            
             $aInhalte = $this->mm->getProfilinhalte($aGeno[0]['basis_id']);
             
             $aGeno[0]['inhalte'] = $aInhalte;

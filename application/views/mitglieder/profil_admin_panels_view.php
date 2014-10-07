@@ -16,6 +16,10 @@
     <span class="glyphicon glyphicon-upload"></span>&nbsp;Logo hochladen
 </button>
 
+<button style="position:absolute;display:none;z-index:99999" id="profil-btn-titelbild-upload" class="btn btn-primary profil-btn-logo-upload">
+    <span class="glyphicon glyphicon-upload"></span>&nbsp;Titelbild hochladen
+</button>    
+
 <div id="profil-content-panel" style="position:absolute;display:none;z-index:99999">
     <button id="profil-btn-edit" class="btn btn-primary">    
         <span class="glyphicon glyphicon-pencil"></span>&nbsp;Bearbeiten

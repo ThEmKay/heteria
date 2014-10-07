@@ -22,7 +22,6 @@
     }
     
     .profil-header{
-        background-image: url(../../gfx/mood_vb_frau.png);
         height: 300px;
         background-size: 100%;
         background-position: 50% 50%
@@ -121,7 +120,12 @@
     <div class="col-lg-1"></div>
 </div>
 <div class="row">
-    <div class="col-lg-12 profil-header"></div>
+    <div id="titelbild" class="col-lg-12 profil-header" style="background-repeat:no-repeat;background-image: url('{mood}');"></div>
+    <form id="profil-titelbild-upload" method="post" enctype="multipart/form-data" action="<?php echo site_url('ajax/profil_ajax/titelbild'); ?>">
+        <input type="hidden" name="token" value="{token}" />
+        <input type="file" id="titelbild-upload" style="display:block;width:0;height:0"
+               onchange="$('#profil-titelbild-upload').submit();" name="input-titelbild-upload" />
+    </form>    
 </div>
 <div class="row">
     <a name="ueber"></a>

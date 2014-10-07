@@ -115,16 +115,20 @@ class Profil_ajax extends CI_Controller {
 
             $this->load->library('upload', $config);            
             
-            delete_files('data/'.$this->session->userdata('permaname').'/');
+            $this->load->helper('directory');
+            $dir = directory_map('./data/'.$this->session->userdata('permaname').'/logo/');
+            copy('./data/'.$this->session->userdata('permaname').'/logo/'.$dir[0], './data/'.$this->session->userdata('permaname').'/temp/'.$dir[0]);            
             
-            if(!$this->upload->do_upload('input-logo-upload') ||
-               !$this->token_check($this->input->post('token'))){
+            delete_files('data/'.$this->session->userdata('permaname').'/logo/');            
+            
+            if(!$this->upload->do_upload('input-logo-upload')){
 
+                copy('./data/'.$this->session->userdata('permaname').'/temp/'.$dir[0], './data/'.$this->session->userdata('permaname').'/logo/'.$dir[0]);
                 echo json_encode(array('success' => false,
+                                       'file' => $dir[0],
                                        'message' => $this->upload->display_errors('<div class="alert alert-danger" role="alert">', '</div>')));
             }
             else{
-                
                 $aUploaded = $this->upload->data();
                 echo json_encode(array('success' => true,
                                        'message' => 'easy',
@@ -136,7 +140,50 @@ class Profil_ajax extends CI_Controller {
                                    'message' => 'Ung&uuml;ltiges Sicherheits-Token.'));             
         }
         
+        delete_files('data/'.$this->session->userdata('permaname').'/temp/');
     }
+    
+
+    public function titelbild(){
+          
+        if($this->token_check($this->input->post('token'))){
+          
+            $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/mood/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['encrypt_name'] = TRUE;
+            $config['max_size']	= '2000';
+
+            $this->load->library('upload', $config);            
+            
+            $this->load->helper('directory');
+            $dir = directory_map('./data/'.$this->session->userdata('permaname').'/mood/');
+            copy('./data/'.$this->session->userdata('permaname').'/mood/'.$dir[0], './data/'.$this->session->userdata('permaname').'/temp/'.$dir[0]);
+                        
+            delete_files('data/'.$this->session->userdata('permaname').'/mood/');
+            
+            if(!$this->upload->do_upload('input-titelbild-upload') ||
+               !$this->token_check($this->input->post('token'))){
+
+                copy('./data/'.$this->session->userdata('permaname').'/temp/'.$dir[0], './data/'.$this->session->userdata('permaname').'/mood/'.$dir[0]);
+                echo json_encode(array('success' => false,
+                                       'file' => $dir[0],
+                                       'message' => $this->upload->display_errors('<div class="alert alert-danger" role="alert">', '</div>')));
+            }
+            else{
+                
+                $aUploaded = $this->upload->data();
+                echo json_encode(array('success' => true,
+                                       'message' => 'easy',
+                                       'file' => $aUploaded['file_name']));              
+            }
+        }else{
+        
+            echo json_encode(array('success' => false,
+                                   'message' => 'Ung&uuml;ltiges Sicherheits-Token.'));             
+        }
+        
+        delete_files('data/'.$this->session->userdata('permaname').'/temp/');
+    }    
             
             
 }
