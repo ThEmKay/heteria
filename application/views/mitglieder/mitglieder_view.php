@@ -65,9 +65,9 @@ h4.media-heading{
         {/statistik}
         {suchergebnis}
         <div class="media alt{alt}">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="<?php echo base_url('gfx/193967.png'); ?>" alt="...">
-          </a>
+          <div class="pull-left" style="text-align:center;width:80px;height:60px;margin-left:5px">
+              <img src="{logo}" style="max-height:60px;max-width:80px">
+          </div>
           <div class="media-body alt{alt}">
             <h4 class="media-heading"><a href="{link}">{name}</a></h4>
             {strasse} | {plz} {ort} - {branche}

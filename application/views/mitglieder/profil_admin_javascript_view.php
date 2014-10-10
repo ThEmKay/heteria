@@ -29,26 +29,7 @@ function bind(){
     });    
 }
 
-$(function(){
- 
-    bind();
-    myNicEditor.setPanel('panel');
-    
-    /************************************************************** BINDS ******
-    /**
-     * MOUSEOVER BINDS - Logo
-     */
-    $('#logo').bind('mouseover', function(){
-        $('#profil-btn-logo-upload').css({top: $('#profil-logo-img').offset().top-30,
-                                          left: $('#profil-logo-img').offset().left+$('#profil-logo-img').width()-$('#profil-btn-logo-upload').width()});
-        $('#profil-btn-logo-upload').show();
-    });
-    $('#profil-btn-logo-upload').bind('mouseover', function(){
-        $(this).show();
-    });
-    $('#logo').bind('mouseout', function(){
-        $('#profil-btn-logo-upload').hide();
-    });
+function bindUpload(){
     /**
      * MOUSEOVER BINDS - Titelbild
      */
@@ -62,8 +43,44 @@ $(function(){
     });     
     $('#titelbild').bind('mouseout', function(){
         $('#profil-btn-titelbild-upload').hide();
+    });
+    /**
+     * MOUSEOVER BINDS - Logo
+     */
+    $('#logo').bind('mouseover', function(){
+        $('#profil-btn-logo-upload').css({top: $('#profil-logo-img').offset().top-30,
+                                          left: $('#profil-logo-img').offset().left+$('#profil-logo-img').width()-$('#profil-btn-logo-upload').width()});
+        $('#profil-btn-logo-upload').show();
+    });
+    $('#profil-btn-logo-upload').bind('mouseover', function(){
+        $(this).show();
+    });
+    $('#logo').bind('mouseout', function(){
+        $('#profil-btn-logo-upload').hide();
     });    
+}
+
+/**
+ * Diese Funktion entfernt während eines Dateiuploads alle Keybindings, die 
+ * Logo und Titelbildupload einblenden.
+ */
+function unbindUpload(){
+    $('#profil-btn-titelbild-upload').hide();
+    $('#titelbild').unbind('mouseover');
+    $('#profil-btn-titelbild-upload').unbind('mouseover');
+    $('#profil-btn-logo-upload').hide(); 
+    $('#logo').unbind('mouseover');
+    $('#profil-btn-logo-upload').unbind('mouseover');     
+}
+
+
+$(function(){
+ 
+    bind();
+    bindUpload();
+    myNicEditor.setPanel('panel');
     
+    /************************************************************** BINDS ****** 
     /**
      * MOUSEOVER BINDS - Neuer Content 
      */
@@ -107,13 +124,14 @@ $(function(){
           
              $('#profil-content-neu-uber').before('<div class="col-lg-4">'+
              '   <div class="profil-content-inner editable" id="inhalt'+data+'" data-feld="inhalt'+data+'">'+
-             '       Beispieltext'+
+             '       '+
              '   </div>'+
              '</div>');
              bind();
 
              $('#inhalt'+data).trigger('mouseover');
-             $('#profil-btn-edit').trigger('click');            
+             $('#profil-btn-edit').trigger('click');
+             $('#inhalt'+data).focus();
           });
                 
          
@@ -202,7 +220,6 @@ $(function(){
         bind();
     });
     
-    
     $('#abort').bind('click', function(){
         myNicEditor.removeInstance(edit.attr('id'));
         
@@ -213,6 +230,7 @@ $(function(){
         bind();    
     });
     
+       
     
     /**
      * LOGO HOCHLADEN
@@ -228,6 +246,9 @@ $(function(){
     });
     
     $('#profil-logo-upload').submit(function(){
+        // Mouseover für Titelbild und Logo während des Upload-Vorganges deaktivieren.
+        unbindUpload();
+        
         $('#message').css({top: $(this).offset().top});
         $(this).ajaxSubmit({success: function(datastring){
                                 data = $.parseJSON(datastring);
@@ -237,9 +258,10 @@ $(function(){
                                     
                                     $('#message').html(data.message);
                                 }
-                                $('#profil-logo-img').attr('src', '../../data/{permaname}/'+data.file);                    
+                                $('#profil-logo-img').attr('src', '../../data/{permaname}/logo/'+data.file);                    
                                 $('#message').show();
-                                setInterval("$('#message').hide()", 3000);                                  
+                                setInterval("$('#message').hide()", 3000);
+                                bindUpload();
                              }
                             });
         return false;
@@ -259,8 +281,11 @@ $(function(){
         $('#titelbild').css('background-size', '3%');
         $('#titelbild').css('background-image', 'url(../../gfx/ajax-loader-big.gif)');
     });
-    
+
     $('#profil-titelbild-upload').submit(function(){
+        // Mouseover für Titelbild und Logo während des Upload-Vorganges deaktivieren.
+        unbindUpload();
+        
         $('#message').css({top: $(this).offset().top+30});
         $(this).ajaxSubmit({success: function(datastring){
                                 data = $.parseJSON(datastring);                                
@@ -272,7 +297,8 @@ $(function(){
                                 $('#titelbild').css('background-size', '100%');
                                 $('#titelbild').css('background-image', 'url(../../data/{permaname}/mood/'+data.file+')');                                
                                 $('#message').show();
-                                setInterval("$('#message').hide()", 3000);                                
+                                setInterval("$('#message').hide()", 3000);
+                                bindUpload();
                              }
                             });
         return false;

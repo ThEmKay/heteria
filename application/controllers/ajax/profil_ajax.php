@@ -30,7 +30,7 @@ class Profil_ajax extends CI_Controller {
         
         if($this->form_validation->run()){
             $this->db->insert('genossenschaft_profil_inhalt', array('basis_id' => $this->session->userdata('basis_id'),
-                                                                    'inhalt' => 'Standardtext',
+                                                                    'inhalt' => '',
                                                                     'typ' => 1,
                                                                     'sort' => 1));
             $this->db->select('id')
@@ -54,7 +54,7 @@ class Profil_ajax extends CI_Controller {
         // Prüfung auf gültiges Sicherheits-Token
         $this->form_validation->set_rules('token', 'Token', 'required|trim|exact_length[40]|callback_token_check');
         // Regeln für den übermittelten Inhalt
-        $this->form_validation->set_rules('inhalt', 'Inhalt', 'required|trim|min_length[1]|max_length[5000]');
+        $this->form_validation->set_rules('inhalt', 'Inhalt', 'trim|max_length[5000]');
 
         if($this->form_validation->run()){
             if(strpos($this->input->post('feld'), 'inhalt') === 0){
@@ -106,7 +106,7 @@ class Profil_ajax extends CI_Controller {
           
         if($this->token_check($this->input->post('token'))){
           
-            $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/';
+            $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/logo';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
             $config['max_size']	= '10000';
@@ -151,7 +151,7 @@ class Profil_ajax extends CI_Controller {
             $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/mood/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
-            $config['max_size']	= '2000';
+            $config['max_size']	= '1000';
 
             $this->load->library('upload', $config);            
             

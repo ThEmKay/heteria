@@ -95,7 +95,10 @@ class Mitglieder extends CI_Controller {
 
                     $r['alt'] = $key%2;
                     $r['link'] = site_url('mitglieder/profil').'/'.urlencode(underscore($r['name']));
-
+                    
+                    $dir = directory_map('data/'.underscore(utf8_decode($r['name'])).'/logo');
+                    
+                    $r['logo'] = base_url('data/'.underscore($r['name']).'/logo/'.$dir[0]);
                 }
             }              
             
