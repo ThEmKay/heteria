@@ -21,8 +21,13 @@ function bind(){
     
     $('.editable-fixed').bind('mouseover', function(){
         edit = $(this);
+        
+        var width = $(this).width();
+        if(width === 0){
+            width = $(document).width()/2;
+        }
         $('#profil-content-panel').css({top: $(this).offset().top-$('#profil-content-panel').height()+2,
-                                        left: $(this).offset().left+$(this).width()-$('#profil-content-panel').width()});
+                                        left: $(this).offset().left+width-$('#profil-content-panel').width()});
         
         $('#profil-btn-delete').hide();
         $('#profil-content-panel').show(); 
