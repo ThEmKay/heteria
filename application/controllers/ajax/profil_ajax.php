@@ -103,10 +103,11 @@ class Profil_ajax extends CI_Controller {
     }
     
     public function logo(){
-          
+        
+        $sPermaname = umlaute(utf8_decode($this->session->userdata('permaname')));
         if($this->token_check($this->input->post('token'))){
-          
-            $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/logo';
+            
+            $config['upload_path'] = './data/'.$sPermaname.'/logo';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
             $config['max_size']	= '10000';
@@ -116,14 +117,14 @@ class Profil_ajax extends CI_Controller {
             $this->load->library('upload', $config);            
             
             $this->load->helper('directory');
-            $dir = directory_map('./data/'.$this->session->userdata('permaname').'/logo/');
-            copy('./data/'.$this->session->userdata('permaname').'/logo/'.$dir[0], './data/'.$this->session->userdata('permaname').'/temp/'.$dir[0]);            
+            $dir = directory_map('./data/'.$sPermaname.'/logo/');
+            copy('./data/'.$sPermaname.'/logo/'.$dir[0], './data/'.$sPermaname.'/temp/'.$dir[0]);            
             
-            delete_files('data/'.$this->session->userdata('permaname').'/logo/');            
+            delete_files('data/'.$sPermaname.'/logo/');            
             
             if(!$this->upload->do_upload('input-logo-upload')){
 
-                copy('./data/'.$this->session->userdata('permaname').'/temp/'.$dir[0], './data/'.$this->session->userdata('permaname').'/logo/'.$dir[0]);
+                copy('./data/'.$sPermaname.'/temp/'.$dir[0], './data/'.$sPermaname.'/logo/'.$dir[0]);
                 echo json_encode(array('success' => false,
                                        'file' => $dir[0],
                                        'message' => $this->upload->display_errors('<div class="alert alert-danger" role="alert">', '</div>')));
@@ -140,15 +141,16 @@ class Profil_ajax extends CI_Controller {
                                    'message' => 'Ung&uuml;ltiges Sicherheits-Token.'));             
         }
         
-        delete_files('data/'.$this->session->userdata('permaname').'/temp/');
+        delete_files('data/'.$sPermaname.'/temp/');
     }
     
 
     public function titelbild(){
-          
+        
+        $sPermaname = umlaute(utf8_decode($this->session->userdata('permaname')));
         if($this->token_check($this->input->post('token'))){
           
-            $config['upload_path'] = './data/'.$this->session->userdata('permaname').'/mood/';
+            $config['upload_path'] = './data/'.$sPermaname.'/mood/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
             $config['max_size']	= '1000';
@@ -156,15 +158,15 @@ class Profil_ajax extends CI_Controller {
             $this->load->library('upload', $config);            
             
             $this->load->helper('directory');
-            $dir = directory_map('./data/'.$this->session->userdata('permaname').'/mood/');
-            copy('./data/'.$this->session->userdata('permaname').'/mood/'.$dir[0], './data/'.$this->session->userdata('permaname').'/temp/'.$dir[0]);
+            $dir = directory_map('./data/'.$sPermaname.'/mood/');
+            copy('./data/'.$sPermaname.'/mood/'.$dir[0], './data/'.$sPermaname.'/temp/'.$dir[0]);
                         
-            delete_files('data/'.$this->session->userdata('permaname').'/mood/');
+            delete_files('data/'.$sPermaname.'/mood/');
             
             if(!$this->upload->do_upload('input-titelbild-upload') ||
                !$this->token_check($this->input->post('token'))){
 
-                copy('./data/'.$this->session->userdata('permaname').'/temp/'.$dir[0], './data/'.$this->session->userdata('permaname').'/mood/'.$dir[0]);
+                copy('./data/'.$sPermaname.'/temp/'.$dir[0], './data/'.$sPermaname.'/mood/'.$dir[0]);
                 echo json_encode(array('success' => false,
                                        'file' => $dir[0],
                                        'message' => $this->upload->display_errors('<div class="alert alert-danger" role="alert">', '</div>')));
@@ -182,7 +184,7 @@ class Profil_ajax extends CI_Controller {
                                    'message' => 'Ung&uuml;ltiges Sicherheits-Token.'));             
         }
         
-        delete_files('data/'.$this->session->userdata('permaname').'/temp/');
+        delete_files('data/'.$sPermaname.'/temp/');
     }    
             
             

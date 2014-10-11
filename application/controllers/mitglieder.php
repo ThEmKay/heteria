@@ -89,27 +89,27 @@ class Mitglieder extends CI_Controller {
 	    	}
             
 	    	$res = $qry->result_array();
-            
+                        
             if(!empty($res)){
                 foreach($res as $key => &$r){
 
                     $r['alt'] = $key%2;
                     $r['link'] = site_url('mitglieder/profil').'/'.urlencode(underscore($r['name']));
-                    
-                    $dir = directory_map('data/'.underscore(utf8_decode($r['name'])).'/logo');
-                    
-                    $r['logo'] = base_url('data/'.underscore($r['name']).'/logo/'.$dir[0]);
+                                        
+                    $dir = directory_map('data/'.underscore(umlaute(utf8_decode($r['name']))).'/logo');
+                    $r['logo'] = base_url('data/'.underscore(umlaute(utf8_decode($r['name']))).'/logo/'.$dir[0]);
                 }
             }              
+            
+            
+
             
             $parse['suchergebnis'] = $res;
             
             $parse['statistik'] = array(array('x' => count($res)));
             
     	}
-    	
-
-               
+    	   
     	$this->parser->parse('mitglieder/mitglieder_view', $parse);
     	
     }
@@ -133,7 +133,7 @@ class Mitglieder extends CI_Controller {
                 // Parsing der einzelnen Komponenten zum Bearbeiten der Profilseite
                 $aGeno[0]['admin_javascript'] = $this->parser->parse('mitglieder/profil_admin_javascript_view',
                                                                      array('token' => $aGeno[0]['token'],
-                                                                           'permaname' => underscore($aGeno[0]['name'])), true);
+                                                                           'permaname' => underscore(umlaute(utf8_decode($aGeno[0]['name'])))), true);
                 $aGeno[0]['admin_panels'] = $this->parser->parse('mitglieder/profil_admin_panels_view', array(), true);;
             }else{
                 $aGeno[0]['admin'] = false;
@@ -144,11 +144,11 @@ class Mitglieder extends CI_Controller {
             //
             foreach($aGeno as &$aGen){
                 $aGen['shaid'] = sha1($aGen['id']);
-                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/logo');
-                $aGen['logo'] = base_url('data/'.underscore($aGeno[0]['name']).'/logo/'.$dir[0]);
-                
-                $dir = directory_map('data/'.utf8_decode(underscore($aGeno[0]['name'])).'/mood/');
-                $aGen['mood'] = base_url('data/'.underscore($aGeno[0]['name']).'/mood/'.$dir[0]);
+                $dir = directory_map('data/'.underscore(umlaute(utf8_decode($aGeno[0]['name']))).'/logo');
+                $aGen['logo'] = base_url('data/'.underscore(umlaute(utf8_decode($aGeno[0]['name']))).'/logo/'.$dir[0]);
+
+                $dir = directory_map('data/'.underscore(umlaute(utf8_decode($aGeno[0]['name']))).'/mood/');
+                $aGen['mood'] = base_url('data/'.underscore(umlaute(utf8_decode($aGeno[0]['name']))).'/mood/'.$dir[0]);
             }
             
             $aInhalte = $this->mm->getProfilinhalte($aGeno[0]['basis_id']);

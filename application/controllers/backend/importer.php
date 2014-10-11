@@ -67,6 +67,7 @@ class Importer extends CI_Controller {
                 $prof['text'] = utf8_encode('Kurzer Einleitungstext über diese tolle Genossenschaft.');
                 $this->db->insert('genossenschaft_profil', $prof);
                 
+                $insert['name'] = umlaute(utf8_decode($insert['name']));
                 mkdir('./data/'.underscore(utf8_decode($insert['name'])));
                 mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/bilder');
                 mkdir('./data/'.underscore(utf8_decode($insert['name'])).'/logo');
@@ -83,6 +84,27 @@ class Importer extends CI_Controller {
         
         echo $iSets;
 	}
+    
+    public function ordnerstruktur(){
+        
+        delete_files('./data/', true);
+        $this->db->select('name')->from('genossenschaft_basis');
+        $oResult = $this->db->get();
+        $aResult = $oResult->result_array();
+        
+        foreach($aResult as $insert){
+            $insert['name'] = umlaute(utf8_decode($insert['name']));
+            mkdir('./data/'.underscore($insert['name']));
+            mkdir('./data/'.underscore($insert['name']).'/bilder');
+            mkdir('./data/'.underscore($insert['name']).'/logo');
+            mkdir('./data/'.underscore($insert['name']).'/mood');
+            mkdir('./data/'.underscore($insert['name']).'/temp');
+            copy('./gfx/default.png', './data/'.underscore($insert['name']).'/logo/default.png');
+            copy('./gfx/default_mood.jpg', './data/'.underscore($insert['name']).'/mood/default_mood.jpg');            
+        }
+        
+        echo 123;
+    }
 	
 	public function indizieren(){
 		
