@@ -100,6 +100,7 @@
     .inner{
         margin-top: 20px !important
     }
+       
         
     </style>
   </head>
@@ -131,6 +132,8 @@
           
       });
       </script>
+      
+    {hilfesystem}
     <nav id="navigation" class="navbar navbar-default mainnav navbar-fixed-top" role="navigation">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -152,10 +155,16 @@
                   <a href="<?php echo site_url('heteria'); ?>">&Uuml;ber Uns</a>
               </li>
               <li class="{aktiv_mitglieder}">
-                  <a href="<?php echo site_url('mitglieder'); ?>">Mitglieder</a>
-              </li>             
+                  <a href="<?php echo site_url('mitglieder'); ?>">Suchmaschine</a>
+              </li>
+              <li class="{aktiv_projekte}">
+                  <a href="<?php echo site_url('mitglieder'); ?>">Projekte</a>
+              </li>               
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="{aktiv_meinheteria}">
+                    <a href="<?php echo site_url('meinheteria'); ?>">Mein heteria</a>
+                </li> 
                 {login_bereich}
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -205,25 +214,27 @@
                 <p><span class="glyphicon glyphicon-earphone"></span> 0160 - 66 77 888</p>
                 <p><span class="glyphicon glyphicon-envelope"></span> hallo@heteria.de</p>
             </div>
-            <div class="col-md-2">&nbsp;</div>
             <div class="col-md-2">
-                <h5>Portal</h5>
                 <ul class="sitemap-list">
                     <li><a href="<?php echo site_url(''); ?>">Startseite</a></li>
                     <li><a href="<?php echo site_url('heteria'); ?>">&Uuml;ber uns</a></li>
-                    <li><a href="<?php echo site_url('mitglieder'); ?>">Mitglieder</li>
-                    <li style="margin-top:22px"><a href="<?php echo site_url('impressum'); ?>">Impressum</li>
+                    <li><a href="<?php echo site_url('mitglieder'); ?>">Suchmaschine</a></li>
+                    <li><a href="<?php echo site_url('mitglieder'); ?>">Projekte</a></li>
+                </ul>                
+            </div>
+            <div class="col-md-2">
+                <ul class="sitemap-list">
+                    <li><a href="<?php echo site_url('impressum'); ?>">Inhalt melden</a></li>
+                    <li style="margin-top:20px"><a href="<?php echo site_url('impressum'); ?>">Impressum</a></li>
+                    <li><a href="<?php echo site_url('impressum'); ?>">Datenschutz</a></li>
+                    <li><a href="<?php echo site_url('impressum'); ?>">Kontakt</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <!--<h5>Genossenschaften</h5>
                 <ul class="sitemap-list">
-                    <li>Navi 1</li>
-                    <li>Navi 2</li>
-                    <li>Navi 3</li>
-                    <li>Navi 4</li>
-                    <li>Navi 5</li>
-                </ul>-->
+                    <li><a href="<?php echo site_url('meinheteria'); ?>">Mein heteria</a></li>
+                    <li><a href="<?php echo site_url('login'); ?>">Login</a></li>
+                </ul>
             </div>
         </div>
         <div class="row footer-3"></div>

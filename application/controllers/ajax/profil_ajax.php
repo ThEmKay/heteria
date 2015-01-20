@@ -107,6 +107,8 @@ class Profil_ajax extends CI_Controller {
         $sPermaname = umlaute(utf8_decode($this->session->userdata('permaname')));
         if($this->token_check($this->input->post('token'))){
             
+            $sPermaname = strtolower($sPermaname);
+            
             $config['upload_path'] = './data/'.$sPermaname.'/logo';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
@@ -115,7 +117,7 @@ class Profil_ajax extends CI_Controller {
             $config['max_height']  = '768';
 
             $this->load->library('upload', $config);            
-            
+                        
             $this->load->helper('directory');
             $dir = directory_map('./data/'.$sPermaname.'/logo/');
             copy('./data/'.$sPermaname.'/logo/'.$dir[0], './data/'.$sPermaname.'/temp/'.$dir[0]);            

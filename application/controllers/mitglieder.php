@@ -14,7 +14,7 @@ class Mitglieder extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->library('protector');
+        //$this->load->library('protector');
         $this->load->model('mitglieder_model', 'mm');
         $this->load->helper(array('inflector', 'directory'));
     }
