@@ -19,21 +19,13 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
-                <div name="picture" style="background-size:100%;height:500px;background-image: url(<?php echo site_url('gfx/9057004391_63c4a41628_o.png'); ?>)">
+                <div name="picture" style="background-size:100%;height:500px;background-image: url(<?php echo site_url('gfx/9057004391_63c4a41628_o.jpg'); ?>)">
                     &nbsp;
                 </div>
                 <div class="carousel-caption">
                     &nbsp;
                 </div>
-            </div>
-            <div class="item">
-                <div name="picture" style="background-size:100%;height:500px;width:100%;background-image: url(<?php echo site_url('gfx/nazIMG_5768.jpg'); ?>)">
-                    &nbsp;
-                </div>
-                <div class="carousel-caption">
-                    Das ist ein sch&ouml;nes Bild!
-                </div>
-            </div>              
+            </div>             
           </div>
           <!-- Controls -->
           <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
