@@ -152,10 +152,10 @@ class Profil_ajax extends CI_Controller {
         $sPermaname = umlaute(utf8_decode($this->session->userdata('permaname')));
         if($this->token_check($this->input->post('token'))){
           
-            $config['upload_path'] = './data/'.$sPermaname.'/mood/';
+            $config['upload_path'] = './data/'.$sPermaname.'/mood';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
-            $config['max_size']	= '1000';
+            $config['max_size']	= '10000';
 
             $this->load->library('upload', $config);            
             
