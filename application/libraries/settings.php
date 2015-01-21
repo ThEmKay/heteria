@@ -20,6 +20,7 @@ class Settings {
         if(!$oCI->session->userdata('set_init')){
             $oCI->session->set_userdata('set_init', true);
             $oCI->session->set_userdata('set_hilfe', true);
+            $oCI->session->set_userdata('set_lokal', false);
         }
         
         

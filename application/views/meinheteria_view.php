@@ -14,43 +14,28 @@
     
 </style>
 <script>
-        
- var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-         
+$(function(){    
     
+    $('#msg').delay(3000).fadeOut();
     
- $(function() {    
-    $("#tags").autocomplete({
+    $('.glyphicon-remove').bind('click', function(){
+        $('#lokal').val('');
+        $('#lokal').attr('readonly', false);
+    });
+    
+    $("#lokal").autocomplete({
         minLength: 3,
-        source: function(request, response){    
+        select: function(event, ui){
+            $('#lokal').attr('readonly', true);
+        },
+        source: function(request, response){
+            $('#indicator').show(); 
             $.getJSON('<?php echo site_url('ajax/util_ajax/autocomplete_lokalisierung'); ?>', request, function(data){
             response(data.results);
+            $('#indicator').hide(); 
         });}
     });
- });
+});
 </script>
 <div class="row" style="margin-top:20px">
     <div class="col-lg-3"></div>
@@ -64,12 +49,19 @@
             bleiben Ihre Eingaben eine Zeit lang erhalten. Der <b>Vorteil</b> ist, dass Sie beim St&ouml;bern durch interessante Unternehmen,
             Projekte und Angebote <b>anonym</b> bleiben.
         </div>
+        {msg}
         <form action="<?php echo current_url(); ?>" method="post">
             <div class="form-group has-feedback">
                 <label class="control-label">
                     heteria lokalisieren
+                    <img id="indicator" style="display:none" src="<?php echo base_url('gfx/ajax-loader.gif'); ?>" />
                 </label>
-                <input id="tags" type="text" class="form-control" placeholder="Heimatstadt / Gemeinde" />          
+                <div class="input-group">
+                    <input style="border-right:0" {lokal_readonly} name="fldLokal" value="{set_lokal}" id="lokal" type="text" class="form-control" placeholder="Heimatstadt / Gemeinde" />
+                    <div class="input-group-addon">
+                        <span style="cursor:pointer" class="glyphicon glyphicon-remove"></span>
+                    </div>
+                </div>
             </div>
             <div class="checkbox">
             <label>

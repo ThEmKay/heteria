@@ -25,7 +25,12 @@ class Util_ajax extends CI_Controller {
         $aReturn = array();
         if(!empty($aResult)){
             foreach($aResult as $aRes){
-                $aReturn[] = $aRes['stadt'].' ('.$aRes['kreis'].' - '.$aRes['land'].')';
+                
+                if($aRes['stadt'] == $aRes['kreis']){
+                    $aReturn[] = $aRes['stadt'].' '.$aRes['land'];   
+                }else{
+                    $aReturn[] = $aRes['stadt'].' '.$aRes['kreis'].' '.$aRes['land'];
+                }
             }
         }
         
