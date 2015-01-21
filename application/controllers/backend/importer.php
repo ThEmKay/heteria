@@ -202,6 +202,36 @@ class Importer extends CI_Controller {
 			 ".$con." Verknüpfungen <br />";
 			
 	}
+    
+    public function staedte(){
+        
+        $file = fopen(base_url('staedte.csv'), 'r');
+		
+		// Übrspringt den ersten Datensatz (Tabellenkopf)
+		fgetcsv($file);
+        
+        $iSets = 0;
+        while(!feof($file)){
+        
+            $csv = fgetcsv($file, 0, ',');   
+
+            $aPrep[utf8_encode($csv[2])] = array('land' => utf8_encode($csv[3]),
+                                                 'kreis' => utf8_encode($csv[7]));  
+        }
+        
+        foreach($aPrep as $sStadt => $a){
+            
+            $aInsert['stadt'] = $sStadt;
+            $aInsert['kreis'] = $a['kreis'];
+            $aInsert['land'] = $a['land'];
+            
+            $this->db->insert('db_lokalisierung', $aInsert);
+        }
+        
+        
+        
+    }
+    
 	
 }
 
