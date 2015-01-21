@@ -128,7 +128,7 @@
 </div>
 <div class="row">
     <div id="titelbild" class="col-lg-12 profil-header" style="background-repeat:no-repeat;background-image: url('{mood}');"></div>
-    <form id="profil-titelbild-upload" method="post" enctype="multipart/form-data" action="<?php echo site_url('ajax/upload'); ?>">
+    <form id="profil-titelbild-upload" method="post" enctype="multipart/form-data" action="<?php echo site_url('ajax/profil_ajax/titelbild'); ?>">
         <input type="hidden" name="token" value="{token}" />
         <input type="file" id="titelbild-upload" style="display:block;width:0;height:0"
                onchange="$('#profil-titelbild-upload').submit();" name="input-titelbild-upload" />

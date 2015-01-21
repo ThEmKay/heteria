@@ -156,7 +156,7 @@ class Profil_ajax extends CI_Controller {
             $config['allowed_types'] = 'gif|jpg|png';
             $config['encrypt_name'] = TRUE;
             $config['max_size']	= '10000';
-
+            
             $this->load->library('upload', $config);            
             
             $this->load->helper('directory');

@@ -290,10 +290,10 @@ $(function(){
     $('#profil-titelbild-upload').submit(function(){
         // Mouseover für Titelbild und Logo während des Upload-Vorganges deaktivieren.
         unbindUpload();
-        
+         
         $('#message').css({top: $(this).offset().top+30});
         $(this).ajaxSubmit({success: function(datastring){
-                                data = $.parseJSON(datastring);                                
+                                data = $.parseJSON(datastring); 
                                 if(data.success){
                                     $('#message').html('<div class="alert alert-success" role="alert">Titelbild erfolgreich hochgeladen!</div>');                                   
                                 }else{
