@@ -21,6 +21,7 @@ $(function(){
     $('.glyphicon-remove').bind('click', function(){
         $('#lokal').val('');
         $('#lokal').attr('readonly', false);
+        $('#lokal').focus();
     });
     
     $("#lokal").autocomplete({
