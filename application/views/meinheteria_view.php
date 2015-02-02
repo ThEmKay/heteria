@@ -45,7 +45,7 @@ $(function(){
             <span class="glyphicon glyphicon-info-sign"></span>
             <b>Nutzen Sie heteria so, wie Sie es m&ouml;chten.</b>
             <br />
-            Sie k&ouml;nnen Sie heteria so einstellen, dass Sie vorrangig Inhalte
+            Sie k&ouml;nnen heteria so einstellen, dass Sie vorrangig Inhalte
             aus Ihrer Region angezeigt bekommen (dazu ist kein Login notwendig). Mithilfe der Session Ihres Internetbrowsers
             bleiben Ihre Eingaben eine Zeit lang erhalten. Der <b>Vorteil</b> ist, dass Sie beim St&ouml;bern durch interessante Unternehmen,
             Projekte und Angebote <b>anonym</b> bleiben.
