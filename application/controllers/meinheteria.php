@@ -12,7 +12,7 @@
  */
 class Meinheteria extends CI_Controller{
     
-    public function index(){
+    public function index(){       
         
         $aParse['msg'] = '';
         if($this->input->post('btnSpeichern')){

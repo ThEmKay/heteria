@@ -22,6 +22,7 @@
     <link href="<?php echo base_url('css/layout.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('css/navigation.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('css/flaggen.css'); ?>" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Cutive+Mono|Open+Sans:400,700' rel='stylesheet' type='text/css'> 
     <style>
     @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
     @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
@@ -78,7 +79,7 @@
     body{
         padding: 0;
         margin: 0;
-        background-color: #615350;
+        background-color: #031B30;
         text-align: justify;
         font-size: 18px !important;
         color: #1d1d1b !important;
@@ -134,110 +135,87 @@
       </script>
       
     {hilfesystem}
-    <nav id="navigation" class="navbar navbar-default mainnav navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="{aktiv_}">
-                  <a href="<?php echo site_url(''); ?>">Startseite</a>
-              </li>                
-              <li class="{aktiv_heteria}">
-                  <a href="<?php echo site_url('heteria'); ?>">&Uuml;ber Uns</a>
-              </li>
-              <li class="{aktiv_mitglieder}">
-                  <a href="<?php echo site_url('mitglieder'); ?>">Suchmaschine</a>
-              </li>
-              <li class="{aktiv_projekte}">
-                  <a href="<?php echo site_url('mitglieder'); ?>">Projekte</a>
-              </li>               
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="{aktiv_meinheteria}">
-                    <a href="<?php echo site_url('meinheteria'); ?>">Mein heteria</a>
-                </li> 
-                {login_bereich}
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <span class="flag flag-Germany"></span>
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu sprache" role="menu">
-                        <li>
-                            <a>
-                                <span class="flag flag-Germany"></span> Deutsch
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="flag flag-United-Kingdom"></span> Englisch
-                            </a>
+    
+    <div style="background-color:#fff">
+    <div class="container-fluid limit">
+        <div class="row">
+            <div class="col-md-1">
+                &nbsp;
+            </div>
+            <div class="col-md-10">
+                <div class="user-navigation">
+                    <ul>
+                        <li class="{aktiv_projekte}">
+                            <a href="<?php echo site_url('mitglieder'); ?>">Kontakt</a>
+                        </li>                        
+                        {login_bereich}
+                    </ul>
+                    
+                </div>
+                <div class="" style="clear:both;font-size:30pt;line-height:26pt;font-weight:bold">
+                    <u><a href="<?php echo site_url(); ?>">Das Werk</a></u>
+                </div>
+                <div class="navigation">
+                    <ul>
+                        <li class="{aktiv_mitglieder}">
+                            <a href="<?php echo site_url('mitglieder'); ?>">Genossenschaft finden</a>
+                        </li>  
+                        <li class="{aktiv_projekte}">
+                            <a href="<?php echo site_url('mitglieder'); ?>">Projekte</a>
+                        </li>                         
+                        <li class="{aktiv_login}">
+                            <a href="<?php echo site_url(''); ?>">Mitglied werden</a>
+                        </li>                
+                        <li class="{aktiv_heteria}">
+                            <a href="<?php echo site_url('heteria'); ?>">&Uuml;ber Uns</a>
                         </li>
                     </ul>
-                </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>  
-
-    <div class="container-fluid content">
-       {content}
+                </div>
+            </div>              
+            <div class="col-md-1">
+                &nbsp;
+            </div>            
+        </div>
     </div>
-    <div class="container-fluid">
-        <div class="row footer-1">
-            <div class="col-md-3">Wir werden unterst&uuml;tzt durch:</div>
-            <div class="col-md-2">
-                <img src="<?php echo base_url('gfx/dummylogo-1.png'); ?>" />
-            </div>
-            <div class="col-md-1">
-                <img src="<?php echo base_url('gfx/dummylogo-2.png'); ?>" />
-            </div>
-            <div class="col-md-4">
-                <img style="width:60%" src="<?php echo base_url('gfx/dummylogo-3.png'); ?>" />
-            </div>
-            <div class="col-md-1">
-                <img src="<?php echo base_url('gfx/dummylogo-4.png'); ?>" />
+    <div class="container-fluid limit"> 
+        <div class="border-top">
+            &nbsp;    
+        </div>
+    </div>
+    {content}
+    </div>
+    <div class="container-fluid footer-2">
+        <div class="container-fluid" style="max-width:1440px">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url('gfx/logo.png'); ?>" style="margin-bottom:20px" />
+                    <p><span class="glyphicon glyphicon-earphone"></span> 0160 - 66 77 888</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span> hallo@heteria.de</p>
+                </div>
+                <div class="col-md-2">
+                    <ul class="sitemap-list">
+                        <li><a href="<?php echo site_url(''); ?>">Startseite</a></li>
+                        <li><a href="<?php echo site_url('heteria'); ?>">&Uuml;ber uns</a></li>
+                        <li><a href="<?php echo site_url('mitglieder'); ?>">Suchmaschine</a></li>
+                        <li><a href="<?php echo site_url('mitglieder'); ?>">Projekte</a></li>
+                    </ul>                
+                </div>
+                <div class="col-md-2">
+                    <ul class="sitemap-list">
+                        <li><a href="<?php echo site_url('impressum'); ?>">Inhalt melden</a></li>
+                        <li style="margin-top:20px"><a href="<?php echo site_url('impressum'); ?>">Impressum</a></li>
+                        <li><a href="<?php echo site_url('impressum'); ?>">Datenschutz</a></li>
+                        <li><a href="<?php echo site_url('impressum'); ?>">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="sitemap-list">
+                        <li><a href="<?php echo site_url('meinheteria'); ?>">Mein heteria</a></li>
+                        <li><a href="<?php echo site_url('login'); ?>">Login</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="row footer-2">
-            <div class="col-md-4">
-                <img src="<?php echo base_url('gfx/logo.png'); ?>" style="margin-bottom:20px" />
-                <p><span class="glyphicon glyphicon-earphone"></span> 0160 - 66 77 888</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> hallo@heteria.de</p>
-            </div>
-            <div class="col-md-2">
-                <ul class="sitemap-list">
-                    <li><a href="<?php echo site_url(''); ?>">Startseite</a></li>
-                    <li><a href="<?php echo site_url('heteria'); ?>">&Uuml;ber uns</a></li>
-                    <li><a href="<?php echo site_url('mitglieder'); ?>">Suchmaschine</a></li>
-                    <li><a href="<?php echo site_url('mitglieder'); ?>">Projekte</a></li>
-                </ul>                
-            </div>
-            <div class="col-md-2">
-                <ul class="sitemap-list">
-                    <li><a href="<?php echo site_url('impressum'); ?>">Inhalt melden</a></li>
-                    <li style="margin-top:20px"><a href="<?php echo site_url('impressum'); ?>">Impressum</a></li>
-                    <li><a href="<?php echo site_url('impressum'); ?>">Datenschutz</a></li>
-                    <li><a href="<?php echo site_url('impressum'); ?>">Kontakt</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="sitemap-list">
-                    <li><a href="<?php echo site_url('meinheteria'); ?>">Mein heteria</a></li>
-                    <li><a href="<?php echo site_url('login'); ?>">Login</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row footer-3"></div>
     </div>      
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>

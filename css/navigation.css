@@ -1,3 +1,83 @@
+.user-navigation{
+    margin-top: 37px;
+    font-size: 12pt
+}
+
+.user-navigation ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+}
+
+.user-navigation ul li{
+    margin: 0px 25px 0px 0px;
+    float: right;
+    color: #000
+}
+
+.user-navigation ul li a{
+    color: #000
+}
+
+.user-navigation ul li a:hover{
+    text-decoration: none;
+    font-weight: bold
+}
+
+.user-navigation ul li.active{
+    font-weight: bold
+}
+
+
+/************************************************************** */
+
+.navigation{
+    margin-top: 30px;
+    font-size: 14pt;
+    margin-bottom: 75px
+}
+
+.navigation ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+}
+
+.navigation ul li{
+    margin: 0px 25px 0px 0px;
+    float: left
+}
+
+.navigation ul li a{
+    color: #000
+}
+
+.navigation ul li a:hover{
+    text-decoration: none;
+    font-weight: bold
+}
+
+.navigation ul li.active{
+    font-weight: bold
+}
+
+.border-top{
+    height: 25px;
+    border: 1px solid;
+    border-bottom: 0;
+    margin: 45px 10px 0px 10px
+}
+
+
+
+
+
+
+
+
+
+
+
 .navbar-brand{
     margin: 0px 10px 0px 10px !important;
     line-height: 55px;
@@ -9,9 +89,17 @@
 }
 
 .mainnav{
-    background-color: #e6e6de !important;
+    background-color: #fff !important;
     border-radius: 0;
     margin-top: 0px
+}
+
+.navbar-default{
+    border: 0 !important;
+}
+
+.navbar-collapse{
+    padding: 0 !important
 }
 
 .mainnav li{
@@ -21,7 +109,11 @@
 
 .navbar-nav li a{
     font-size: 100%;
-    color: #1b1b1d !important
+    padding: 0px 25px 0px 0px
+}
+
+.navbar-nav.active{
+    background-color: #fff !important
 }
 
 .mainnav li.active{

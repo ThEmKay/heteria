@@ -36,56 +36,54 @@ h4.media-heading{
 
 
 </style>
-<div class="jumbotron profil-header">
-    <div class="container">
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-            <p>
-                <span>
-                    Durchsuchen Sie unsere Datenbank mit mehr als <span style="font-size:200%">{genos}</span> Genossenschaften!
-                </span>
-            </p>
+<div class="container-fluid limit">
+    <div class="border-content">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <?php echo validation_errors() ?>
+                <form name="frmSuche" role="form" action="<?php echo current_url(); ?>" method="POST">   
+                    <div class="input-group">
+                      <input onchange="frmSuche.submit()" type="text" value="<?php echo set_value('fldSuche'); ?>" name="fldSuche" class="form-control input-lg" placeholder="Suchbegriff eingeben..." style="border-right:0px">
+                      <span class="input-group-addon" style="background-color:#fff;border-left:0px">@</span>
+                    </div>                          
+                </form>
+                {statistik}
+                <div style="text-align:right;margin-bottom:10px">
+                    Es wurden {x} Genossenschaften gefunden.
+                </div>
+                {/statistik}
+            </div>
+            <!-- 
+            <div class="col-md-10">
+                {genossenschaften}    
+                <div class="col-md-3">
+                    <div class="thumbnail" style="min-height:0;padding: 10px">
+                        <a href="<?php echo site_url('mitglieder/profil'); ?>/{permalink}">
+                            <img style="max-width:100%" src="<?php echo base_url('data'); ?>/{shaid}/logo/{logo}" />
+                        </a>
+                    </div> 
+                </div>
+                {/genossenschaften}    
+            </div> -->
+            <div class="col-md-3"></div> 
         </div>
-        <div class="col-md-5"></div>
+        <div class="row">
+            <div class="col-md-1"></div> 
+            <div class="col-md-10">
+                {suchergebnis}
+                <div class="media alt{alt}">
+                  <div class="pull-left" style="text-align:center;width:80px;height:60px;margin-left:5px">
+                      <img src="{logo}" style="max-height:60px;max-width:80px">
+                  </div>
+                  <div class="media-body alt{alt}">
+                    <h4 class="media-heading"><a href="{link}">{name}</a></h4>
+                    {strasse} | {plz} {ort} - {branche}
+                  </div>
+                </div>
+                {/suchergebnis}                
+            </div>
+            <div class="col-md-1"></div> 
+        </div>
     </div>
-</div>
-<div class="row" style="margin-top:20px">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-    	<?php echo validation_errors() ?>
-    	<form name="frmSuche" role="form" action="<?php echo current_url(); ?>" method="POST">
-		  <div class="form-group">
-		    <input onchange="frmSuche.submit()" type="text" value="<?php echo set_value('fldSuche'); ?>" name="fldSuche" class="form-control input-lg" placeholder="Suchbegriff eingeben...">
-		  </div>
-		</form>
-        {statistik}
-        <div style="text-align:right;margin-bottom:10px">
-            Es wurden {x} Genossenschaften gefunden.
-        </div>
-        {/statistik}
-        {suchergebnis}
-        <div class="media alt{alt}">
-          <div class="pull-left" style="text-align:center;width:80px;height:60px;margin-left:5px">
-              <img src="{logo}" style="max-height:60px;max-width:80px">
-          </div>
-          <div class="media-body alt{alt}">
-            <h4 class="media-heading"><a href="{link}">{name}</a></h4>
-            {strasse} | {plz} {ort} - {branche}
-          </div>
-        </div>
-        {/suchergebnis}
-    </div>
-    <!-- 
-    <div class="col-md-10">
-        {genossenschaften}    
-        <div class="col-md-3">
-            <div class="thumbnail" style="min-height:0;padding: 10px">
-                <a href="<?php echo site_url('mitglieder/profil'); ?>/{permalink}">
-                    <img style="max-width:100%" src="<?php echo base_url('data'); ?>/{shaid}/logo/{logo}" />
-                </a>
-            </div> 
-        </div>
-        {/genossenschaften}    
-    </div> -->
-    <div class="col-md-1"></div> 
 </div>
